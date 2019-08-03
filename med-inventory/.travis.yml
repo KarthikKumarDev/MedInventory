@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "node"
+  - "8.9"
 warnings_are_errors: false
 install:
   - npm install
@@ -10,4 +10,4 @@ deploy:
   provider: firebase
   skip_cleanup: true
   token:
-    secure: $FIREBASE_TOKEN
+    secure: "Gk28fhnW6F6zOCxY6JvGxGeHhJZ4OU8Qkt0Q4DdklIFtc/StFJj2Uu7N7FVcj2WsbWWjdvgBdhKwRMLzNPdzC/N45LFYzJhxs24xZpACJMvELkaXwLMuB2WKYD4fYqLBVyGh+Tx5mZZXL2zPj6emIUSkyLV4N2tgQoaZqIhgxDSbcAPamFxZBT6Svijrh62X9a+7qrYLq/NltYrngUwPsTA/SQPy1WHIvcC5a5NZ3xFP0LJTHR408W6fBSjHdb/vOzVWuKmRMnJyW3+qTPEUq+gteiw9A8CJ/ABjLzdT5cQkb0aUwrUcQqCy8EPQA97RmgLKMdhKiiFWKkQ5cdFxX9lbbyY6vORIbGM50k+BOZVpPf5Qfr5Gdlr5feWE0lm2uIC/sOJqI/vqTvHFMLsBxcBaBmuI7vQN4oCGa2Mt3+kmv5DGbwgArvRqsNrZP5qmR2//PZRJBu5Irwx5qYfFrOnF+QxLK4IAqqUpgrvCgSwighxaGcTio6VaB7UhN2dfhVkDeP3NSb37P8c5TDkzen8Uzt+4CkDvRDxBL8+aTBimnRzkXzB/MyICLkodAMUGDz1HBAZa6whNFWHxOLTrGSQlYRq1ugxlnkI7yVqIzPqvAtvEJvnAvx8yhaCIDac/OB7dCTraLtEa4GgPDCN58cN0lcIcmYIYJNtzx46AoLA="
