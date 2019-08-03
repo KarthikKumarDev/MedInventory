@@ -5,9 +5,9 @@ cache:
   directories:
   - node_modules
   - med-inventory/node_modules
-before_install:
-  - npm install -g firebase-tools
+install:
   - cd med-inventory
+  - npm install -g firebase-tools
   - npm install
 script:
   - npm run build
