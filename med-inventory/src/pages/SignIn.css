@@ -1,0 +1,9 @@
+.signin-card{
+    box-shadow: 2px 2px 5px grey ,  -2px -2px 5px grey;
+    padding: 25px;
+    width: 30%;
+    min-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    background: white;
+}

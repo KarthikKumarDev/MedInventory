@@ -6,9 +6,11 @@
     "@material-ui/core": "^4.3.1",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
+    "firebase": "^6.3.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "react-with-firebase-auth": "^1.0.3"
   },
   "devDependencies": {},
   "scripts": {

@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function NavBar() {    
+export default function NavBar(props) {    
     const classes = useStyles();
     return (
         <AppBar position="static">
@@ -32,7 +32,7 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             KK Sidha Clinic
           </Typography>
-          <Button color="inherit" >Login</Button>
+          <Button color="inherit" onClick={props.signOut} >Log out</Button>
         </Toolbar>
       </AppBar>
     );
