@@ -11,8 +11,7 @@ class Home extends Component {
 
     return (
       <div>
-          <NavBar signOut={signOut}/>
-          <p>Hello, {user.displayName}</p>
+          <NavBar user={user} signOut={signOut}/>
       </div>
     );
   }
