@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NavBar from "../layout/NavBar"
+import NavBar from "./NavBar"
 
-class Home extends Component {
+class MainLayout extends Component {
   
   render() {
     const {
@@ -17,4 +17,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default MainLayout;

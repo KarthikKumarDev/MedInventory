@@ -4,7 +4,7 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from './firebaseConfig';
-import Home from "./pages/Home"
+import MainLayout from "./layout/MainLayout";
 import SignIn from "./pages/SignIn"
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -26,7 +26,7 @@ class App extends Component {
       <div>
       {
         user
-          ? <div><Home user={user} signOut={signOut}/></div>
+          ? <div><MainLayout user={user} signOut={signOut}/></div>
           : <div className="signin-container"><SignIn signInWithGoogle={signInWithGoogle}/></div>
       }
       </div>

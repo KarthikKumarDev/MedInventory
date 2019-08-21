@@ -17,6 +17,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import HomeIcon from "@material-ui/icons/Home";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+
+import Home from "../components/Home";
+import AddMedicine from "../components/AddMedicine";
+import { Router } from "@reach/router";
+import { Link } from "@reach/router";
 
 const drawerWidth = 240;
 
@@ -145,11 +152,29 @@ export default function NavBar(props) {
         </div>
         <Divider />
         <List>
-          <ListItem  button key="Add Medicine">
+          <ListItem button key="Home">
             <ListItemIcon>
-              <LibraryAddIcon />
+              <Link to="/">
+                <HomeIcon />
+              </Link>
             </ListItemIcon>
-            <ListItemText primary="Add Medicine"/>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button key="Sales">
+            <ListItemIcon>
+              <Link to="/sales">
+                <AddShoppingCartIcon />
+              </Link>
+            </ListItemIcon>
+            <ListItemText primary="Sales" />
+          </ListItem>
+          <ListItem button key="Add Medicine">
+            <ListItemIcon>
+              <Link to="/add-medicine">
+                <LibraryAddIcon />
+              </Link>
+            </ListItemIcon>
+            <ListItemText primary="Add Medicine" />
           </ListItem>
           <ListItem onClick={props.signOut} button key="Log Out">
             <ListItemIcon>
@@ -162,7 +187,10 @@ export default function NavBar(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography>
-          Hello, {props.user.displayName}
+          <Router>
+            <Home user={props.user} path="/" />
+            <AddMedicine path="/add-medicine" />
+          </Router>
         </Typography>
       </main>
     </div>
