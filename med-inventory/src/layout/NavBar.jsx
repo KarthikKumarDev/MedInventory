@@ -19,9 +19,11 @@ import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import AddToQueueIcon from "@material-ui/icons/AddToQueue";
+import SearchIcon from "@material-ui/icons/Search";
 
 import Home from "../components/Home";
-import AddMedicine from "../components/AddMedicine";
+import AddMedicine from "../components/add-medicine/AddMedicine";
 import { Router } from "@reach/router";
 import { Link } from "@reach/router";
 
@@ -152,30 +154,46 @@ export default function NavBar(props) {
         </div>
         <Divider />
         <List>
-          <ListItem button key="Home">
-            <ListItemIcon>
-              <Link to="/">
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <ListItem button key="Home">
+              <ListItemIcon>
                 <HomeIcon />
-              </Link>
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem button key="Sales">
-            <ListItemIcon>
-              <Link to="/sales">
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </Link>
+          <Link to="/search" style={{ textDecoration: 'none' }}>
+            <ListItem button key="Search">
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+              <ListItemText primary="Search" />
+            </ListItem>
+          </Link>
+          <Link to="/sales" style={{ textDecoration: 'none' }}>
+            <ListItem button key="Sales">
+              <ListItemIcon>
                 <AddShoppingCartIcon />
-              </Link>
-            </ListItemIcon>
-            <ListItemText primary="Sales" />
-          </ListItem>
-          <ListItem button key="Add Medicine">
-            <ListItemIcon>
-              <Link to="/add-medicine">
+              </ListItemIcon>
+              <ListItemText primary="Sales" />
+            </ListItem>
+          </Link>
+          <Link to="/purchase" style={{ textDecoration: 'none' }}>
+            <ListItem button key="Purchase">
+              <ListItemIcon>
+                <AddToQueueIcon />
+              </ListItemIcon>
+              <ListItemText primary="Purchase" />
+            </ListItem>
+          </Link>
+          <Link to="/add-medicine" style={{ textDecoration: 'none' }}>
+            <ListItem button key="Add Medicine">
+              <ListItemIcon>
                 <LibraryAddIcon />
-              </Link>
-            </ListItemIcon>
-            <ListItemText primary="Add Medicine" />
-          </ListItem>
+              </ListItemIcon>
+              <ListItemText primary="Add Medicine" />
+            </ListItem>
+          </Link>
           <ListItem onClick={props.signOut} button key="Log Out">
             <ListItemIcon>
               <PowerSettingsNewIcon />
@@ -186,12 +204,10 @@ export default function NavBar(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography>
-          <Router>
-            <Home user={props.user} path="/" />
-            <AddMedicine path="/add-medicine" />
-          </Router>
-        </Typography>
+        <Router>
+          <Home user={props.user} path="/" />
+          <AddMedicine path="/add-medicine" />
+        </Router>
       </main>
     </div>
   );

@@ -1,0 +1,13 @@
+.add-medicine-section{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.add-medicine-section > .MuiPaper-root{
+    width: 40%; 
+}
+
+.form-button{
+    margin-top: 25px !important;
+    margin-left: 65% !important;
+}
