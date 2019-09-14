@@ -17,6 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AddToQueueIcon from "@material-ui/icons/AddToQueue";
@@ -24,6 +25,8 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import Home from "../components/Home";
 import AddMedicine from "../components/add-medicine/AddMedicine";
+import SearchMedicine from "../components/search-medicine/SearchMedicine";
+import UploadData from "../components/upload-data/UploadData";
 import { Router } from "@reach/router";
 import { Link } from "@reach/router";
 
@@ -154,7 +157,7 @@ export default function NavBar(props) {
         </div>
         <Divider />
         <List>
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <ListItem button key="Home">
               <ListItemIcon>
                 <HomeIcon />
@@ -162,7 +165,7 @@ export default function NavBar(props) {
               <ListItemText primary="Home" />
             </ListItem>
           </Link>
-          <Link to="/search" style={{ textDecoration: 'none' }}>
+          <Link to="/search" style={{ textDecoration: "none" }}>
             <ListItem button key="Search">
               <ListItemIcon>
                 <SearchIcon />
@@ -170,7 +173,7 @@ export default function NavBar(props) {
               <ListItemText primary="Search" />
             </ListItem>
           </Link>
-          <Link to="/sales" style={{ textDecoration: 'none' }}>
+          <Link to="/sales" style={{ textDecoration: "none" }}>
             <ListItem button key="Sales">
               <ListItemIcon>
                 <AddShoppingCartIcon />
@@ -178,7 +181,7 @@ export default function NavBar(props) {
               <ListItemText primary="Sales" />
             </ListItem>
           </Link>
-          <Link to="/purchase" style={{ textDecoration: 'none' }}>
+          <Link to="/purchase" style={{ textDecoration: "none" }}>
             <ListItem button key="Purchase">
               <ListItemIcon>
                 <AddToQueueIcon />
@@ -186,7 +189,7 @@ export default function NavBar(props) {
               <ListItemText primary="Purchase" />
             </ListItem>
           </Link>
-          <Link to="/add-medicine" style={{ textDecoration: 'none' }}>
+          <Link to="/add-medicine" style={{ textDecoration: "none" }}>
             <ListItem button key="Add Medicine">
               <ListItemIcon>
                 <LibraryAddIcon />
@@ -194,6 +197,16 @@ export default function NavBar(props) {
               <ListItemText primary="Add Medicine" />
             </ListItem>
           </Link>
+          {props.user.email === "jkkr.1996@gmail.com" ? (
+            <Link to="/upload-data" style={{ textDecoration: "none" }}>
+              <ListItem button key="Upload Data">
+                <ListItemIcon>
+                  <CloudUploadIcon />
+                </ListItemIcon>
+                <ListItemText primary="Upload Data" />
+              </ListItem>
+            </Link>
+          ) : null}
           <ListItem onClick={props.signOut} button key="Log Out">
             <ListItemIcon>
               <PowerSettingsNewIcon />
@@ -207,6 +220,8 @@ export default function NavBar(props) {
         <Router>
           <Home user={props.user} path="/" />
           <AddMedicine path="/add-medicine" />
+          <SearchMedicine path="/search" />
+          <UploadData path="/upload-data" />
         </Router>
       </main>
     </div>
