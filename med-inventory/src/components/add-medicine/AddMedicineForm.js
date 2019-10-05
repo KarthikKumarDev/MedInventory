@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withStyles } from '@material-ui/styles';
+import { withStyles } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -39,11 +39,11 @@ class AddMedicineForm extends Component {
     category: "",
     packing: "",
     manufacturer: "",
-    rackNumber: "",
     reorderLevel: 0,
     purchaseRate: 0,
     mrp: 0,
-    gst: 0,
+    cgst: 0,
+    sgst: 0,
     tax: 0,
     convertRatio: 0
   };
@@ -52,160 +52,167 @@ class AddMedicineForm extends Component {
     this.setState({ [changedValue]: event.target.value });
   };
 
-  render (){
+  render() {
     const { classes } = this.props;
 
     return (
-        <form className={classes.container} noValidate autoComplete="off">
-          <div className="add-medicine-section">
-            <Card>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Add Medicine
-                </Typography>
-                <Typography variant="body2" component="p" />
-                <TextField
-                  id="standard-name"
-                  label="Name & Combination"
-                  className={classes.textField}
-                  value={this.state.name}
-                  onChange={this.handleChange("name")}
-                  margin="normal"
-                />
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="category-native-simple">Category</InputLabel>
-                  <Select
-                    native
-                    className={classes.select}
-                    label="Category"
-                    value={this.state.category}
-                    onChange={this.handleChange("category")}
-                    inputProps={{
-                      name: "category",
-                      id: "category-native-simple"
-                    }}
-                  >
-                    <option value="" />
-                    <option value={"Category1"}>Category1</option>
-                    <option value={"Category2"}>Category2</option>
-                    <option value={"Category3"}>Category3</option>
-                  </Select>
-                </FormControl>
-                <TextField
-                  id="packing"
-                  label="Packing"
-                  className={classes.textField}
-                  value={this.state.packing}
-                  onChange={this.handleChange("packing")}
-                  margin="normal"
-                />
-                <TextField
-                  id="manufacturer"
-                  label="Manufacturer"
-                  className={classes.textField}
-                  value={this.state.manufacturer}
-                  onChange={this.handleChange("manufacturer")}
-                  margin="normal"
-                />
-                <TextField
-                  id="rackNumber"
-                  label="Rack Number"
-                  className={classes.textField}
-                  value={this.state.rackNumber}
-                  onChange={this.handleChange("rackNumber")}
-                  margin="normal"
-                />
-                <TextField
-                  id="reorderLevel"
-                  label="Reorder Level."
-                  className={classes.textField}
-                  value={this.state.reorderLevel}
-                  onChange={this.handleChange("reorderLevel")}
-                  margin="normal"
-                />
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent>
-                <Typography variant="body2" component="p" />
-                <TextField
-                  id="purchaseRate"
-                  label="Purchase Rate"
-                  type="number"
-                  className={classes.textField}
-                  value={this.state.purchaseRate}
-                  onChange={this.handleChange("purchaseRate")}
-                  margin="normal"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">&#8377;</InputAdornment>
-                    )
+      <form className={classes.container} noValidate autoComplete="off">
+        <div className="add-medicine-section">
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Add Medicine
+              </Typography>
+              <Typography variant="body2" component="p" />
+              <TextField
+                id="standard-name"
+                label="Name & Combination"
+                className={classes.textField}
+                value={this.state.name}
+                onChange={this.handleChange("name")}
+                margin="normal"
+              />
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="category-native-simple">
+                  Category
+                </InputLabel>
+                <Select
+                  native
+                  className={classes.select}
+                  label="Category"
+                  value={this.state.category}
+                  onChange={this.handleChange("category")}
+                  inputProps={{
+                    name: "category",
+                    id: "category-native-simple"
                   }}
-                />
-                <TextField
-                  id="mrp"
-                  label="M.R.P."
-                  type="number"
-                  className={classes.textField}
-                  value={this.state.mrp}
-                  onChange={this.handleChange("mrp")}
-                  margin="normal"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">&#8377;</InputAdornment>
-                    )
-                  }}
-                />
-                <TextField
-                  id="gst"
-                  label="GST"
-                  type="number"
-                  className={classes.textField}
-                  value={this.state.gst}
-                  onChange={this.handleChange("gst")}
-                  margin="normal"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">%</InputAdornment>
-                    )
-                  }}
-                />
-                <TextField
-                  id="tax"
-                  label="Tax"
-                  type="number"
-                  className={classes.textField}
-                  value={this.state.tax}
-                  onChange={this.handleChange("tax")}
-                  margin="normal"
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">%</InputAdornment>
-                    )
-                  }}
-                />
-                <TextField
-                  id="convertRatio"
-                  label="Convert Ratio"
-                  type="number"
-                  className={classes.textField}
-                  value={this.state.convertRatio}
-                  onChange={this.handleChange("convertRatio")}
-                  margin="normal"
-                />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => this.props.handleAddMedicine(this.state)}
-                  className="form-button"
                 >
-                  Add Medicine
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </form>
-      );
+                  <option value="" />
+                  <option value={"Category1"}>Category1</option>
+                  <option value={"Category2"}>Category2</option>
+                  <option value={"Category3"}>Category3</option>
+                </Select>
+              </FormControl>
+              <TextField
+                id="packing"
+                label="Packing"
+                className={classes.textField}
+                value={this.state.packing}
+                onChange={this.handleChange("packing")}
+                margin="normal"
+              />
+              <TextField
+                id="manufacturer"
+                label="Manufacturer"
+                className={classes.textField}
+                value={this.state.manufacturer}
+                onChange={this.handleChange("manufacturer")}
+                margin="normal"
+              />
+              <TextField
+                id="reorderLevel"
+                label="Reorder Level."
+                className={classes.textField}
+                value={this.state.reorderLevel}
+                onChange={this.handleChange("reorderLevel")}
+                margin="normal"
+              />
+              <TextField
+                id="convertRatio"
+                label="Convert Ratio"
+                type="number"
+                className={classes.textField}
+                value={this.state.convertRatio}
+                onChange={this.handleChange("convertRatio")}
+                margin="normal"
+              />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent>
+              <Typography variant="body2" component="p" />
+              <TextField
+                id="purchaseRate"
+                label="Purchase Rate"
+                type="number"
+                className={classes.textField}
+                value={this.state.purchaseRate}
+                onChange={this.handleChange("purchaseRate")}
+                margin="normal"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">&#8377;</InputAdornment>
+                  )
+                }}
+              />
+              <TextField
+                id="mrp"
+                label="M.R.P."
+                type="number"
+                className={classes.textField}
+                value={this.state.mrp}
+                onChange={this.handleChange("mrp")}
+                margin="normal"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">&#8377;</InputAdornment>
+                  )
+                }}
+              />
+              <TextField
+                id="cgst"
+                label="Central GST"
+                type="number"
+                className={classes.textField}
+                value={this.state.cgst}
+                onChange={this.handleChange("cgst")}
+                margin="normal"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">%</InputAdornment>
+                  )
+                }}
+              />
+              <TextField
+                id="sgst"
+                label="State GST"
+                className={classes.textField}
+                value={this.state.sgst}
+                onChange={this.handleChange("sgst")}
+                margin="normal"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">%</InputAdornment>
+                  )
+                }}
+              />
+              <TextField
+                id="tax"
+                label="Tax"
+                type="number"
+                className={classes.textField}
+                value={this.state.tax}
+                onChange={this.handleChange("tax")}
+                margin="normal"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">%</InputAdornment>
+                  )
+                }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => this.props.handleAddMedicine(this.state)}
+                className="form-button"
+              >
+                Add Medicine
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </form>
+    );
   }
 }
 
