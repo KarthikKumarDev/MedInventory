@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import HelpIcon from "@material-ui/icons/Help";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
@@ -30,6 +31,7 @@ import UploadData from "../components/upload-data/UploadData";
 import { Router } from "@reach/router";
 import { Link } from "@reach/router";
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -38,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    padding :"0px",
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -52,7 +55,14 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 13
+  },
+  logoImage:{
+   height: "64px"
+  },
+  logoImageOpen:{
+    height: "50px",
+    marginLeft : 10
   },
   hide: {
     display: "none"
@@ -82,10 +92,26 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
+    //alignItems: "center",
+    //justifyContent: "flex-end",
+    //padding: "0 8px",
     ...theme.mixins.toolbar
+  },
+  toolbarStart:{
+    display : "flex",
+    alignItems : "start",
+    justifyContent : "flex-start"
+  },
+  toolbarEnd:{
+    display : "flex",
+    alignItems : "end",
+    justifyContent : "flex-end",
+    marginLeft :940
+  },
+  profileImage:{
+    width:"50px",
+    height:"50px",
+    marginLeft:20
   },
   content: {
     flexGrow: 1,
@@ -116,20 +142,30 @@ export default function NavBar(props) {
         })}
       >
         <Toolbar>
+          <div class={classes.toolbarStart}>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
+             color="inherit"
+             aria-label="open drawer"
+             onClick={handleDrawerOpen}
+             edge="start"
+             className={clsx(classes.menuButton, {
               [classes.hide]: open
-            })}
-          >
-            <MenuIcon />
+              })}
+            >
+           <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            KK Sidha Clinic
-          </Typography>
+          <img className={clsx(classes.logoImage, {[classes.hide]: open})} src= "/images/siddha.jpg" alt="logo" />
+          </div>
+          <div class={classes.toolbarEnd}>
+          <IconButton
+             color="inherit"
+             aria-label="Help"
+             edge="start"
+            >
+           <HelpIcon />
+          </IconButton>
+           <img className={classes.profileImage} src= "/images/person_white_image.png" alt="profile" />
+          </div>  
         </Toolbar>
       </AppBar>
       <Drawer
@@ -147,6 +183,7 @@ export default function NavBar(props) {
         open={open}
       >
         <div className={classes.toolbar}>
+        <img className={classes.logoImageOpen} src= "/images/siddha.jpg" alt="logo" />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
