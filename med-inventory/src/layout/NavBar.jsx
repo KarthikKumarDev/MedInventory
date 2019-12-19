@@ -141,7 +141,7 @@ export default function NavBar(props) {
         })}
       >
         <Toolbar>
-            <div class={classes.toolbarStart}>
+            <div className={classes.toolbarStart}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -155,7 +155,7 @@ export default function NavBar(props) {
               </IconButton>
               <span className={clsx(classes.toolBarFont, {[classes.hide] : open})}>KK Siddha Medicines</span>
             </div>
-            <div class={classes.toolbarEnd}>
+            <div className={classes.toolbarEnd}>
               <IconButton
                 color="inherit"
                 aria-label="Help"
