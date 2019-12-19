@@ -6,7 +6,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -57,10 +56,7 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: 13
   },
-  logoImage:{
-   height: "64px"
-  },
-  logoImageOpen:{
+  logoDrawerImageOpen:{
     height: "50px",
     marginLeft : 10
   },
@@ -92,21 +88,24 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     display: "flex",
-    //alignItems: "center",
-    //justifyContent: "flex-end",
-    //padding: "0 8px",
     ...theme.mixins.toolbar
   },
+  toolBarFont :{
+     fontFamily : "sans-serif",
+     paddingTop  : "15px",
+     fontWeight : "bold"
+   },
   toolbarStart:{
     display : "flex",
-    alignItems : "start",
-    justifyContent : "flex-start"
+    alignItems : "end",
+    justifyContent : "flex-start",
+    width :"50vw"
   },
   toolbarEnd:{
     display : "flex",
     alignItems : "end",
     justifyContent : "flex-end",
-    marginLeft :940
+    width :"50vw"
   },
   profileImage:{
     width:"50px",
@@ -142,30 +141,30 @@ export default function NavBar(props) {
         })}
       >
         <Toolbar>
-          <div class={classes.toolbarStart}>
-          <IconButton
-             color="inherit"
-             aria-label="open drawer"
-             onClick={handleDrawerOpen}
-             edge="start"
-             className={clsx(classes.menuButton, {
-              [classes.hide]: open
-              })}
-            >
-           <MenuIcon />
-          </IconButton>
-          <img className={clsx(classes.logoImage, {[classes.hide]: open})} src= "/images/siddha.jpg" alt="logo" />
-          </div>
-          <div class={classes.toolbarEnd}>
-          <IconButton
-             color="inherit"
-             aria-label="Help"
-             edge="start"
-            >
-           <HelpIcon />
-          </IconButton>
-           <img className={classes.profileImage} src= "/images/person_white_image.png" alt="profile" />
-          </div>  
+            <div class={classes.toolbarStart}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, {
+                  [classes.hide]: open
+                  })}
+                >
+              <MenuIcon />
+              </IconButton>
+              <span className={clsx(classes.toolBarFont, {[classes.hide] : open})}>KK Siddha Medicines</span>
+            </div>
+            <div class={classes.toolbarEnd}>
+              <IconButton
+                color="inherit"
+                aria-label="Help"
+                edge="start"
+                >
+              <HelpIcon />
+              </IconButton>
+              <img className={classes.profileImage} src= "/images/person_white_image.png" alt="profile" />
+            </div>  
         </Toolbar>
       </AppBar>
       <Drawer
@@ -183,7 +182,7 @@ export default function NavBar(props) {
         open={open}
       >
         <div className={classes.toolbar}>
-        <img className={classes.logoImageOpen} src= "/images/siddha.jpg" alt="logo" />
+        <img className={classes.logoDrawerImageOpen} src= "/images/siddha.jpg" alt="logo" />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
