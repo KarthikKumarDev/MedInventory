@@ -22,7 +22,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AddToQueueIcon from "@material-ui/icons/AddToQueue";
 import SearchIcon from "@material-ui/icons/Search";
-
 import Home from "../components/Home";
 import AddMedicine from "../components/add-medicine/AddMedicine";
 import SearchMedicine from "../components/search-medicine/SearchMedicine";
@@ -31,7 +30,7 @@ import { Router } from "@reach/router";
 import { Link } from "@reach/router";
 
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -141,7 +140,7 @@ export default function NavBar(props) {
         })}
       >
         <Toolbar>
-            <div class={classes.toolbarStart}>
+            <div className={classes.toolbarStart}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -155,7 +154,7 @@ export default function NavBar(props) {
               </IconButton>
               <span className={clsx(classes.toolBarFont, {[classes.hide] : open})}>KK Siddha Medicines</span>
             </div>
-            <div class={classes.toolbarEnd}>
+            <div className={classes.toolbarEnd}>
               <IconButton
                 color="inherit"
                 aria-label="Help"
