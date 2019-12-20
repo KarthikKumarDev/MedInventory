@@ -4,15 +4,13 @@ import MedicineTable from "./MedicineTable"
 import axios from "axios";
 import "./SearchMedicine.css";
 
-class AddMedicine extends Component {
+class GetAllMedicine extends Component {
   state = { medicines: this.getMedicine };
 
   render() {
     return (
       <div>
-        {this.state.medicines
-          ? <MedicineTable data={this.state.medicines} />
-          : <CircularProgress />}
+        {this.state.medicines ? <MedicineTable data={this.state.medicines} /> : <CircularProgress />}
       </div>
     );
   }
@@ -38,4 +36,4 @@ class AddMedicine extends Component {
   };
 }
 
-export default AddMedicine;
+export default GetAllMedicine;
