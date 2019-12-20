@@ -1,75 +1,59 @@
 import React from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
-export default function MedicineTable(props) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  function handleChangePage(event, newPage) {
-    setPage(newPage);
+class MedicineTable extends React.Component {
+  constructor(props) {
+  super(props);
+  this.gridOptions = {
+    suppressCellSelection: true,
+    suppressPropertyNamesCheck: true,
+    accentedSort: true,
+    enableBrowserTooltips: true,
+    suppressPreventDefaultOnMouseWheel: true,
+    suppressDragLeaveHidesColumns: true,
+    rowHeight: 40,
+    headerHeight: 46
   }
-
-  function handleChangeRowsPerPage(event) {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  this.state = {
+    columnDefs: [
+      {
+        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned :true
+      }, {
+        headerName: "MANUFACTURER", field: "manufacturer",sortable: true, filter: true
+      }, {
+        headerName: "PRICE", field: "mrp",sortable: true, filter: true
+      },{
+        headerName : "CREATED BY", field :"CreatedBy",sortable: true, filter: true
+      },{
+        headerName : "CATEGORY" , field : "category" ,sortable : true , filter :true
+      }
+    ],
+    rowData: props.data
   }
-
-  return (
-    <div>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {Object.keys(props.data[0]).map((key,index) => (
-              <TableCell
-                key={key}
-                align="center"
-                style={{ minWidth: 50 }}
-              >
-                {key}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.data
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map(row => {
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.MedicineId}>
-                  {Object.keys(row).map((key,index) => {
-                    const value = row[key];
-                    return (
-                      <TableCell key={Date.now() * Math.random()} align="center">
-                        { value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-        </TableBody>
-      </Table>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={props.data.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        backIconButtonProps={{
-          "aria-label": "previous page"
-        }}
-        nextIconButtonProps={{
-          "aria-label": "next page"
-        }}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-    </div>
-  );
 }
+  render(){
+      return (
+        <div
+          className="ag-theme-balham"
+          style={{
+            height: '500px',
+            width: '1020px'
+          }}
+        >
+          <AgGridReact
+            columnDefs={this.state.columnDefs}
+            rowData={this.state.rowData}
+            gridOptions={this.gridOptions}
+            pagination="true"
+            paginationPageSize="10"
+          >
+          </AgGridReact>
+        </div>
+      );
+  }
+}
+
+export default MedicineTable;
