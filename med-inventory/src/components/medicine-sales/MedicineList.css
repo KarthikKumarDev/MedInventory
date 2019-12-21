@@ -1,0 +1,15 @@
+.bill-item-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bill-item-row > .MuiTextField-root {
+  margin-left: 1px;
+  margin-right: 1px;
+  width: 70%;
+  min-width: 350px;
+}
+
+.bill-item-row > * {
+  margin-top: 16px;
+}

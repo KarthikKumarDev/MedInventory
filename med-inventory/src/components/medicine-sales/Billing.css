@@ -1,0 +1,14 @@
+.billing-section {
+  margin: 0 auto;
+  width: 40%;
+  min-width: 500px;
+}
+
+.billing-section > * > .billing-details-section {
+  margin-top: 50px;
+}
+
+.bill-generation-button {
+  margin-top: 10px !important;
+  width: 100%;
+}

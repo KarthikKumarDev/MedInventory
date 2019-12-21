@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import MedicineTable from "./MedicineTable"
+import CircularProgress from "@material-ui/core/CircularProgress";
+import MedicineTable from "./MedicineTable";
 import axios from "axios";
 import "./SearchMedicine.css";
 
@@ -10,7 +10,11 @@ class GetAllMedicine extends Component {
   render() {
     return (
       <div>
-        {this.state.medicines ? <MedicineTable data={this.state.medicines} /> : <CircularProgress />}
+        {this.state.medicines ? (
+          <MedicineTable data={this.state.medicines} />
+        ) : (
+          <CircularProgress />
+        )}
       </div>
     );
   }

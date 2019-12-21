@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,13 +23,14 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AddToQueueIcon from "@material-ui/icons/AddToQueue";
 import SearchIcon from "@material-ui/icons/Search";
+
 import Home from "../components/Home";
 import AddMedicine from "../components/add-medicine/AddMedicine";
 import SearchMedicine from "../components/search-medicine/SearchMedicine";
+import Billing from "../components/medicine-sales/Billing";
 import UploadData from "../components/upload-data/UploadData";
 import { Router } from "@reach/router";
 import { Link } from "@reach/router";
-
 
 const drawerWidth = 250;
 
@@ -38,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    padding :"0px",
+    padding: "0px",
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -55,9 +57,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: 13
   },
-  logoDrawerImageOpen:{
+  logoDrawerImageOpen: {
     height: "50px",
-    marginLeft : 10
+    marginLeft: 10
   },
   hide: {
     display: "none"
@@ -89,27 +91,27 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     ...theme.mixins.toolbar
   },
-  toolBarFont :{
-     fontFamily : "sans-serif",
-     paddingTop  : "15px",
-     fontWeight : "bold"
-   },
-  toolbarStart:{
-    display : "flex",
-    alignItems : "end",
-    justifyContent : "flex-start",
-    width :"50vw"
+  toolBarFont: {
+    fontFamily: "sans-serif",
+    paddingTop: "15px",
+    fontWeight: "bold"
   },
-  toolbarEnd:{
-    display : "flex",
-    alignItems : "end",
-    justifyContent : "flex-end",
-    width :"50vw"
+  toolbarStart: {
+    display: "flex",
+    alignItems: "end",
+    justifyContent: "flex-start",
+    width: "50vw"
   },
-  profileImage:{
-    width:"50px",
-    height:"50px",
-    marginLeft:20
+  toolbarEnd: {
+    display: "flex",
+    alignItems: "end",
+    justifyContent: "flex-end",
+    width: "50vw"
+  },
+  profileImage: {
+    width: "50px",
+    height: "50px",
+    marginLeft: 20
   },
   content: {
     flexGrow: 1,
@@ -140,30 +142,34 @@ export default function NavBar(props) {
         })}
       >
         <Toolbar>
-            <div className={classes.toolbarStart}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                className={clsx(classes.menuButton, {
-                  [classes.hide]: open
-                  })}
-                >
+          <div className={classes.toolbarStart}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open
+              })}
+            >
               <MenuIcon />
-              </IconButton>
-              <span className={clsx(classes.toolBarFont, {[classes.hide] : open})}>KK Siddha Medicines</span>
-            </div>
-            <div className={classes.toolbarEnd}>
-              <IconButton
-                color="inherit"
-                aria-label="Help"
-                edge="start"
-                >
+            </IconButton>
+            <span
+              className={clsx(classes.toolBarFont, { [classes.hide]: open })}
+            >
+              KK Siddha Medicines
+            </span>
+          </div>
+          <div className={classes.toolbarEnd}>
+            <IconButton color="inherit" aria-label="Help" edge="start">
               <HelpIcon />
-              </IconButton>
-              <img className={classes.profileImage} src= "/images/person_white_image.png" alt="profile" />
-            </div>  
+            </IconButton>
+            <img
+              className={classes.profileImage}
+              src="/images/person_white_image.png"
+              alt="profile"
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,7 +187,11 @@ export default function NavBar(props) {
         open={open}
       >
         <div className={classes.toolbar}>
-        <img className={classes.logoDrawerImageOpen} src= "/images/siddha.jpg" alt="logo" />
+          <img
+            className={classes.logoDrawerImageOpen}
+            src="/images/siddha.jpg"
+            alt="logo"
+          />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -208,12 +218,12 @@ export default function NavBar(props) {
               <ListItemText primary="Search" />
             </ListItem>
           </Link>
-          <Link to="/sales" style={{ textDecoration: "none" }}>
+          <Link to="/billing" style={{ textDecoration: "none" }}>
             <ListItem button key="Sales">
               <ListItemIcon>
                 <AddShoppingCartIcon />
               </ListItemIcon>
-              <ListItemText primary="Sales" />
+              <ListItemText primary="Billing" />
             </ListItem>
           </Link>
           <Link to="/purchase" style={{ textDecoration: "none" }}>
@@ -255,6 +265,7 @@ export default function NavBar(props) {
         <Router>
           <Home user={props.user} path="/" />
           <AddMedicine path="/add-medicine" />
+          <Billing path="/billing" />
           <SearchMedicine path="/search" />
           <UploadData path="/upload-data" />
         </Router>
