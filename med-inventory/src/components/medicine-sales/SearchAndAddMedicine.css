@@ -1,0 +1,16 @@
+.search-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* width: 40%;
+  min-width: 500px; */
+}
+
+.search-section > * {
+  padding-bottom: 5px;
+}
+
+.search-section > .MuiAutocomplete-root,
+.search-section > .MuiButton-root {
+  width: 100%;
+}

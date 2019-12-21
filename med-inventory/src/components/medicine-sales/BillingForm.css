@@ -1,0 +1,17 @@
+.billing-details-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.billing-details-section > .MuiPaper-root {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .billing-details-section > .MuiPaper-root {
+    width: 100%;
+    min-width: 250px;
+  }
+}
