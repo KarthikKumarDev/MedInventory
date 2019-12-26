@@ -14,7 +14,7 @@ class PreviewPurchase extends Component{
       super(props);
       this.state ={
           selectedData : this.props.medicinelistchoosen
-      }
+      };
   }
 
   render() {

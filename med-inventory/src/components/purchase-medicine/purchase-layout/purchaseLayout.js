@@ -23,7 +23,7 @@ class purchaseLayout extends Component{
       suppressPreventDefaultOnMouseWheel: true,
       suppressDragLeaveHidesColumns: true,
       headerHeight: 46
-    }
+    };
 
     this.state = {
       columnDefs: [
@@ -104,7 +104,7 @@ class purchaseLayout extends Component{
     this.getMedicine();
    } 
 
-   onSelectionChanged = (params) =>{
+   onSelectionChanged = (params) => {
     const selectedNodeList = params.api.getSelectedNodes();
     let medicineList = [];
     selectedNodeList.map((node) => {
@@ -119,7 +119,7 @@ class purchaseLayout extends Component{
       .get(
         "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
       )
-      .then(response => {
+      .then( (response) => {
         this.setState({ rowData: response.data.Items }, () =>
           console.log(this.state.rowData)
         );
