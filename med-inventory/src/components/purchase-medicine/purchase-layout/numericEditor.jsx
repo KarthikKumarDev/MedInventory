@@ -8,7 +8,7 @@ export default class NumericEditor extends Component {
     constructor(props) {
         super(props);
 
-        this.cancelBeforeStart = this.props.charPress && ('1234567890'.indexOf(this.props.charPress) < 0);
+        this.cancelBeforeStart = this.props.charPress && ("1234567890".indexOf(this.props.charPress) < 0);
 
         this.state = this.createInitialState(props);
 
@@ -22,7 +22,7 @@ export default class NumericEditor extends Component {
 
         if (props.keyPress === KEY_BACKSPACE || props.keyPress === KEY_DELETE) {
             // if backspace or delete pressed, we clear the cell
-            startValue = '';
+            startValue = "";
         } else if (props.charPress) {
             // if a letter was pressed, we start with the letter
             startValue = props.charPress;
@@ -38,16 +38,16 @@ export default class NumericEditor extends Component {
         return {
             value: startValue,
             highlightAllOnFocus
-        }
+        };
     }
 
     componentDidMount() {
-        this.refs.input.addEventListener('keydown', this.onKeyDown);
+        this.refs.input.addEventListener("keydown", this.onKeyDown);
 
     }
 
     componentWillUnmount() {
-        this.refs.input.removeEventListener('keydown', this.onKeyDown);
+        this.refs.input.removeEventListener("keydown", this.onKeyDown);
     }
 
     afterGuiAttached() {
@@ -59,7 +59,7 @@ export default class NumericEditor extends Component {
 
             this.setState({
                 highlightAllOnFocus: false
-            })
+            });
         } else {
             // when we started editing, we want the carot at the end, not the start.
             // this comes into play in two scenarios: a) when user hits F2 and b)
@@ -84,7 +84,7 @@ export default class NumericEditor extends Component {
     // not very practical, but demonstrates the method.
     isCancelAfterEnd() {
         return this.state.value > 1000000;
-    };
+    }
 
     onKeyDown(event) {
         if (this.isLeftOrRight(event) || this.deleteOrBackspace(event)) {
@@ -93,7 +93,9 @@ export default class NumericEditor extends Component {
         }
 
         if (!this.isKeyPressedNumeric(event)) {
-            if (event.preventDefault) event.preventDefault();
+            if (event.preventDefault) {
+               event.preventDefault();
+             }
         }
     }
 

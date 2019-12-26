@@ -1,6 +1,6 @@
 .card-style{
     width:100%;
-    height:80vh !important;
+    height:80vh;
     margin-top : 10px;
 }
 .preview-button{
@@ -14,7 +14,7 @@
     padding : 20px;
 }
 .MuiCard-root {
-    overflow: Auto !important;
+    overflow: Auto;
 }
 .layout-style{
     display: flex; 

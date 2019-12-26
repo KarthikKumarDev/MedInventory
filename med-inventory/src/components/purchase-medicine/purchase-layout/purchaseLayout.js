@@ -3,9 +3,9 @@ import Card from "@material-ui/core/Card";
 import axios from "axios";
 import CardContent from "@material-ui/core/CardContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./purchaseLayout.css";
 import NumericEditor from "./numericEditor.jsx";
 import PreviewPurchase from "./previewPurchase";
@@ -17,6 +17,7 @@ class purchaseLayout extends Component{
     this.gridOptions = {
       suppressCellSelection: true,
       suppressPropertyNamesCheck: true,
+      suppressRowClickSelection: true,
       accentedSort: true,
       enableBrowserTooltips: true,
       suppressPreventDefaultOnMouseWheel: true,
@@ -51,7 +52,7 @@ class purchaseLayout extends Component{
         numericEditor: NumericEditor
       },
       selectedMedicineData : []
-    }
+    };
   }
   render(){
       return(
@@ -63,9 +64,9 @@ class purchaseLayout extends Component{
                     <div
                       className="ag-theme-balham grid-box"
                       style={{
-                        height: '400px',
-                        width: '100%',
-                        padding: '50px'
+                        height: "400px",
+                        width: "100%",
+                        padding: "50px"
                       }}
                     >
                       <AgGridReact
@@ -92,9 +93,9 @@ class purchaseLayout extends Component{
            <CircularProgress />
          )} 
        </div>
-      )
+      );
    }
-   onGridReady = params => {
+   onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   };
@@ -103,22 +104,16 @@ class purchaseLayout extends Component{
     this.getMedicine();
    } 
 
-   onSelectionChanged = params =>{
-    const selectedNodes = params.api.getSelectedNodes();
+   onSelectionChanged = (params) =>{
+    const selectedNodeList = params.api.getSelectedNodes();
     let medicineList = [];
-    selectedNodes.map( node =>{
+    selectedNodeList.map((node) => {
          medicineList.push({ ...node.data});
-    }) 
+         return console.log(node);
+    }); 
     this.setState({selectedMedicineData : medicineList});
-   }
+   };
    
-  handleAddMedicineToBill = medicine => {
-    let billMedicineList = this.state.billMedicineList;
-    if (!billMedicineList.find(item => item.MedicineId === medicine.MedicineId))
-      billMedicineList.push({ ...medicine, units: 1 });
-    this.setState({ billMedicineList });
-  };
-
   getMedicine = () => {
     axios
       .get(
