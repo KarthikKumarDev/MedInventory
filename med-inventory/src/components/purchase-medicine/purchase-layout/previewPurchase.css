@@ -1,0 +1,21 @@
+.preview-content-box{
+    font-size: 1em;
+    font-weight : 600px;
+    font-family : "sans-serif"; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+}
+
+.name-box .count-box{
+    width : 10vw;
+}
+
+.table-cell-style{
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}

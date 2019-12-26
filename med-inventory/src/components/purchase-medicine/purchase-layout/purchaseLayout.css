@@ -1,0 +1,34 @@
+.card-style{
+    width:100%;
+    height:80vh !important;
+    margin-top : 10px;
+}
+.preview-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+.router-outlet-style{
+    flex-grow: 1;
+    padding : 20px;
+}
+.MuiCard-root {
+    overflow: Auto !important;
+}
+.layout-style{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+}
+.grid-box{
+   width: 70vw;
+}
+
+.preview-box{
+  width : 30vw;
+  height: 65vh;
+  margin-top:50px;
+  border: 1px solid #D8D8D8;
+  box-shadow: 2px #D8D8D8;
+}
