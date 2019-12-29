@@ -3,24 +3,29 @@
     height:80vh;
     margin-top : 10px;
 }
+
 .preview-button{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     padding-bottom: 20px;
 }
+
 .router-outlet-style{
     flex-grow: 1;
     padding : 20px;
 }
+
 .MuiCard-root {
     overflow: Auto;
 }
+
 .layout-style{
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
 }
+
 .grid-box{
    width: 70vw;
 }

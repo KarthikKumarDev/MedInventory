@@ -8,7 +8,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import "./previewPurchase.css";
 
-
 class PreviewPurchase extends Component{
   constructor(props){
       super(props);

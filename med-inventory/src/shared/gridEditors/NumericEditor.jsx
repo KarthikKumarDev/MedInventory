@@ -7,11 +7,9 @@ const KEY_F2 = 113;
 export default class NumericEditor extends Component {
     constructor(props) {
         super(props);
-
+        // allows the user to enter only numbers
         this.cancelBeforeStart = this.props.charPress && ("1234567890".indexOf(this.props.charPress) < 0);
-
         this.state = this.createInitialState(props);
-
         this.onKeyDown = this.onKeyDown.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -43,7 +41,6 @@ export default class NumericEditor extends Component {
 
     componentDidMount() {
         this.refs.input.addEventListener("keydown", this.onKeyDown);
-
     }
 
     componentWillUnmount() {

@@ -7,10 +7,10 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./purchaseLayout.css";
-import NumericEditor from "./numericEditor.jsx";
-import PreviewPurchase from "./previewPurchase";
+import NumericEditor from "../../../shared/gridEditors/NumericEditor";
+import PreviewPurchase from "./PreviewPurchase";
 
-class purchaseLayout extends Component{
+class PurchaseLayout extends Component{
   constructor(){
     super();
     this.gridApi={};
@@ -24,33 +24,33 @@ class purchaseLayout extends Component{
       suppressDragLeaveHidesColumns: true,
       headerHeight: 46
     };
+    this.rowSelection = "multiple";
+    this.singleEditClick = "true";
+    this.frameworkComponents= {
+      numericEditor: NumericEditor
+    };
+    this.columnDefs= [
+      {
+        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", width:180,
+        headerCheckboxSelection: true, checkboxSelection: true, lockPosition: true
+      }, {
+        headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  width:150, filter: true
+      }, {
+        headerName: "PRICE", field: "mrp",sortable: true,  width:150, filter: true
+      },{
+        headerName : "CREATED BY", field :"CreatedBy",sortable: true, width:150, filter: true
+      },{
+        headerName : "CATEGORY" , field : "category" ,sortable : true , width:150, filter :true
+      },{
+        headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , width:180, sortable : true , filter : true
+      },{
+        headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , width:180, filter : true,
+        editable: true,cellEditor: "numericEditor",pinned: "right", lockPinned: true
+      }
+    ];
 
     this.state = {
-      columnDefs: [
-        {
-          headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", width:180,
-          headerCheckboxSelection: true, checkboxSelection: true, lockPosition: true
-        }, {
-          headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  width:150, filter: true
-        }, {
-          headerName: "PRICE", field: "mrp",sortable: true,  width:150, filter: true
-        },{
-          headerName : "CREATED BY", field :"CreatedBy",sortable: true, width:150, filter: true
-        },{
-          headerName : "CATEGORY" , field : "category" ,sortable : true , width:150, filter :true
-        },{
-          headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , width:180, sortable : true , filter : true
-        },{
-          headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , width:180, filter : true,
-          editable: true,cellEditor: "numericEditor",pinned: "right", lockPinned: true
-        }
-      ],
       rowData: [],
-      rowSelection : "multiple",
-      singleEditClick : "true",
-      frameworkComponents: {
-        numericEditor: NumericEditor
-      },
       selectedMedicineData : []
     };
   }
@@ -70,14 +70,14 @@ class purchaseLayout extends Component{
                       }}
                     >
                       <AgGridReact
-                              columnDefs={this.state.columnDefs}
+                              columnDefs={this.columnDefs}
                               rowData={this.state.rowData}
                               gridOptions={this.gridOptions}
                               pagination="true"
                               paginationPageSize="10"
                               rowSelection={this.state.rowSelection}
-                              singleClickEdit={this.state.singleEditClick}
-                              frameworkComponents={this.state.frameworkComponents}
+                              singleClickEdit={this.singleEditClick}
+                              frameworkComponents={this.frameworkComponents}
                               onSelectionChanged={this.onSelectionChanged}
                               onGridReady={this.onGridReady}
                           >
@@ -132,4 +132,4 @@ class purchaseLayout extends Component{
   
  }
 
-export default purchaseLayout;
+export default PurchaseLayout;
