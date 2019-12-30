@@ -8,7 +8,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./purchaseLayout.css";
 import NumericEditor from "../../../shared/gridEditors/NumericEditor";
-import PreviewPurchase from "./PreviewPurchase";
+import PreviewPurchase from "./previewPurchase";
 
 class PurchaseLayout extends Component{
   constructor(){
