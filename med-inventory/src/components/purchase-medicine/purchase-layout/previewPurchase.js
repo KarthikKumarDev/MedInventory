@@ -21,24 +21,27 @@ class PreviewPurchase extends Component{
           <>
            {this.state.selectedData ?
                <div className="preview-content-box">
-                    <TableContainer component={Paper}>
-                        <Table  size="small"  aria-label="simple table">
-                            <TableHead>
-                                <TableRow >
-                                    <TableCell class="table-cell-style" align="left">Name of Medicine</TableCell>
-                                    <TableCell class="table-cell-style" align="left">New Stock Count</TableCell>
-                                </TableRow>
-                            </TableHead>
+                  <Table stickyHeader aria-label="sticky table">
+                        <TableHead>
+                            <TableRow >
+                                <TableCell align="left">Name of Medicine</TableCell>
+                                <TableCell align="left">New Stock Count</TableCell>
+                            </TableRow>
+                        </TableHead>
+                    </Table>
+                     <div className="table-container">
+                         <Table>
                             <TableBody>
-                            {this.props.medicinelistchoosen.map(item => (
-                                <TableRow key={item.name}>
-                                     <TableCell class="table-cell-style" align="left">{item.name}</TableCell>
-                                     <TableCell class="table-cell-style" align="left">{item.newStockCount}</TableCell>
-                                </TableRow>
-                            ))}
+                                {this.props.medicinelistchoosen.map(item => (
+                                    <TableRow key={item.name}>
+                                        <TableCell class="table-cell-style" align="left">{item.name}</TableCell>
+                                        <TableCell class="table-cell-style" align="center">{item.newStockCount}</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
-                        </Table>
-                     </TableContainer>
+                         </Table>
+                     </div>
+
               </div>
                : ""}
           </>

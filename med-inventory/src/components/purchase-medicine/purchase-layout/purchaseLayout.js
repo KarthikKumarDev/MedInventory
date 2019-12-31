@@ -75,7 +75,7 @@ class PurchaseLayout extends Component{
                               gridOptions={this.gridOptions}
                               pagination="true"
                               paginationPageSize="10"
-                              rowSelection={this.state.rowSelection}
+                              rowSelection={this.rowSelection}
                               singleClickEdit={this.singleEditClick}
                               frameworkComponents={this.frameworkComponents}
                               onSelectionChanged={this.onSelectionChanged}
