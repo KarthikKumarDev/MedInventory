@@ -13,9 +13,6 @@ const styles = theme => ({
 });
 
 class PurchaseForm extends Component {
-    constructor(props) {
-        super(props);
-    }
     state = {
         purchaseNumber: "",
         invoiceAmount : "",
