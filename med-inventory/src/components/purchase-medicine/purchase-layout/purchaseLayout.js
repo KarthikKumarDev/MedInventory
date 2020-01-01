@@ -9,6 +9,7 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./purchaseLayout.css";
 import NumericEditor from "../../../shared/gridEditors/NumericEditor";
 import PreviewPurchase from "./previewPurchase";
+import PurchaseForm from "./PurchaseForm";
 
 class PurchaseLayout extends Component{
   constructor(){
@@ -48,12 +49,20 @@ class PurchaseLayout extends Component{
         editable: true,cellEditor: "numericEditor",pinned: "right", lockPinned: true
       }
     ];
-
     this.state = {
       rowData: [],
-      selectedMedicineData : []
+      selectedMedicineData : [],
+      purchaseDetails :{
+        purchaseNumber: "",
+        invoiceAmount : "",
+        invoiceDate : new Date(),
+        dicount : "",
+        purchaseDate: new Date(),
+        total : ""
+      }
     };
   }
+  
   render(){
       return(
       <div>
@@ -61,30 +70,36 @@ class PurchaseLayout extends Component{
             <Card className="card-style">
                 <CardContent>
                  <div className="layout-style">
-                    <div
-                      className="ag-theme-balham grid-box"
-                      style={{
-                        height: "400px",
-                        width: "100%",
-                        padding: "50px"
-                      }}
-                    >
-                      <AgGridReact
-                              columnDefs={this.columnDefs}
-                              rowData={this.state.rowData}
-                              gridOptions={this.gridOptions}
-                              pagination="true"
-                              paginationPageSize="10"
-                              rowSelection={this.rowSelection}
-                              singleClickEdit={this.singleEditClick}
-                              frameworkComponents={this.frameworkComponents}
-                              onSelectionChanged={this.onSelectionChanged}
-                              onGridReady={this.onGridReady}
-                          >
-                      </AgGridReact>
-                    </div>
-                    <div className="preview-box">
-                      <PreviewPurchase medicinelistchoosen={this.state.selectedMedicineData} />
+                   <div className= "layout-box1">
+                      <div
+                          className="ag-theme-balham"
+                          style={{
+                            height: "300px"
+                          }}
+                        >
+                          <AgGridReact
+                                  columnDefs={this.columnDefs}
+                                  rowData={this.state.rowData}
+                                  gridOptions={this.gridOptions}
+                                  pagination="true"
+                                  paginationPageSize="10"
+                                  rowSelection={this.rowSelection}
+                                  singleClickEdit={this.singleEditClick}
+                                  frameworkComponents={this.frameworkComponents}
+                                  onSelectionChanged={this.onSelectionChanged}
+                                  onGridReady={this.onGridReady}
+                              >
+                          </AgGridReact>
+                        </div>
+                        <div className="form-box">
+                          <PurchaseForm  purchaseDetails={this.state.purchaseDetails} updatePurchaseDetails={purchaseDetails =>
+                            this.setState({ purchaseDetails })}/>
+                        </div>
+                   </div> 
+                    <div className="layout-box2">
+                      <div className="preview-box">
+                         <PreviewPurchase medicinelistchoosen={this.state.selectedMedicineData} />
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -95,6 +110,7 @@ class PurchaseLayout extends Component{
        </div>
       );
    }
+
    onGridReady = (params) => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
