@@ -23,7 +23,13 @@ class PurchaseLayout extends Component{
       enableBrowserTooltips: true,
       suppressPreventDefaultOnMouseWheel: true,
       suppressDragLeaveHidesColumns: true,
-      headerHeight: 46
+      headerHeight: 46,
+      onGridReady: params => {
+        params.api.sizeColumnsToFit();
+      },
+      onGridSizeChanged: (params) => {
+        params.api.sizeColumnsToFit();
+      }  
     };
     this.rowSelection = "multiple";
     this.singleEditClick = "true";
@@ -32,20 +38,20 @@ class PurchaseLayout extends Component{
     };
     this.columnDefs= [
       {
-        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", minWidth:180,
+        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", width:180, minWidth:180,
         headerCheckboxSelection: true, checkboxSelection: true, lockPosition: true
       }, {
-        headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  minWidth:150, filter: true
+        headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  width:150,minWidth:150, filter: true
       }, {
-        headerName: "PRICE", field: "mrp",sortable: true,  minWidth:150, filter: true
+        headerName: "PRICE", field: "mrp",sortable: true,  width:150,minWidth:150, filter: true
       },{
-        headerName : "CREATED BY", field :"CreatedBy",sortable: true, minWidth:150, filter: true
+        headerName : "CREATED BY", field :"CreatedBy",sortable: true, width:150,minWidth:150, filter: true
       },{
-        headerName : "CATEGORY" , field : "category" ,sortable : true , minWidth:150, filter :true
+        headerName : "CATEGORY" , field : "category" ,sortable : true , width:150,minWidth:150, filter :true
       },{
-        headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , minwidth:180, sortable : true , filter : true
+        headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , width:180,minWidth:180, sortable : true , filter : true
       },{
-        headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , minWidth:180, filter : true,
+        headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , width:180, minWidth:180,filter : true,
         editable: true,cellEditor: "numericEditor",pinned: "right", lockPinned: true
       }
     ];
@@ -74,8 +80,7 @@ class PurchaseLayout extends Component{
                       <div
                           className="ag-theme-balham"
                           style={{
-                            height: "300px",
-                            width:"100%"
+                            height: "300px"
                           }}
                         >
                           <AgGridReact
@@ -87,8 +92,9 @@ class PurchaseLayout extends Component{
                                   rowSelection={this.rowSelection}
                                   singleClickEdit={this.singleEditClick}
                                   frameworkComponents={this.frameworkComponents}
-                                  onSelectionChanged={this.onSelectionChanged}
+                                  onSelectionChanged={this.onGridDataChanged}
                                   onGridReady={this.onGridReady}
+                                  onCellValueChanged={this.onGridDataChanged}
                               >
                           </AgGridReact>
                         </div>
@@ -121,7 +127,7 @@ class PurchaseLayout extends Component{
     this.getMedicine();
    } 
 
-   onSelectionChanged = (params) => {
+   onGridDataChanged = (params) => {
     const selectedNodeList = params.api.getSelectedNodes();
     let medicineList = [];
     selectedNodeList.map(node => medicineList.push({ ...node.data })); 
