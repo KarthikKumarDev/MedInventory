@@ -23,7 +23,7 @@ class PurchaseForm extends Component {
       };
       handleChange = changedValue => event => {
         const updatedValue =
-          changedValue === "purchaseDate" ? event : event.target.value;
+         (changedValue === "purchaseDate" || changedValue === "invoiceDate")? event : event.target.value;
         const purchaseDetails = {
           ...this.props.purchaseDetails,
           [changedValue]: updatedValue
@@ -43,6 +43,7 @@ class PurchaseForm extends Component {
                                 format="dd/MMM/yyyy"
                                 margin="normal"
                                 id="purchaseDate"
+                                className={classes.textField}
                                 label="Purchase Date"
                                 value={this.props.purchaseDetails.purchaseDate}
                                 onChange={this.handleChange("purchaseDate")}
@@ -70,7 +71,8 @@ class PurchaseForm extends Component {
                                 format="dd/MMM/yyyy"
                                 margin="normal"
                                 id="invoiceDate"
-                                label="Purchase Date"
+                                className={classes.textField}
+                                label="Invoice Date"
                                 value={this.props.purchaseDetails.invoiceDate}
                                 onChange={this.handleChange("invoiceDate")}
                                 KeyboardButtonProps={{

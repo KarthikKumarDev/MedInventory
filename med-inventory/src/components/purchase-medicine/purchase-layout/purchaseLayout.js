@@ -32,20 +32,20 @@ class PurchaseLayout extends Component{
     };
     this.columnDefs= [
       {
-        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", width:180,
+        headerName: "NAME", field: "name" ,sortable: true, filter: true ,pinned:"left", minWidth:180,
         headerCheckboxSelection: true, checkboxSelection: true, lockPosition: true
       }, {
-        headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  width:150, filter: true
+        headerName: "MANUFACTURER", field: "manufacturer",sortable: true,  minWidth:150, filter: true
       }, {
-        headerName: "PRICE", field: "mrp",sortable: true,  width:150, filter: true
+        headerName: "PRICE", field: "mrp",sortable: true,  minWidth:150, filter: true
       },{
-        headerName : "CREATED BY", field :"CreatedBy",sortable: true, width:150, filter: true
+        headerName : "CREATED BY", field :"CreatedBy",sortable: true, minWidth:150, filter: true
       },{
-        headerName : "CATEGORY" , field : "category" ,sortable : true , width:150, filter :true
+        headerName : "CATEGORY" , field : "category" ,sortable : true , minWidth:150, filter :true
       },{
-        headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , width:180, sortable : true , filter : true
+        headerName : "CURRENT STOCK COUNT" , resizable :"true",field : "currentStockCount" , minwidth:180, sortable : true , filter : true
       },{
-        headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , width:180, filter : true,
+        headerName : "NEW STOCK COUNT" , field : "newStockCount" , sortable : true , minWidth:180, filter : true,
         editable: true,cellEditor: "numericEditor",pinned: "right", lockPinned: true
       }
     ];
@@ -74,7 +74,8 @@ class PurchaseLayout extends Component{
                       <div
                           className="ag-theme-balham"
                           style={{
-                            height: "300px"
+                            height: "300px",
+                            width:"100%"
                           }}
                         >
                           <AgGridReact
@@ -123,10 +124,7 @@ class PurchaseLayout extends Component{
    onSelectionChanged = (params) => {
     const selectedNodeList = params.api.getSelectedNodes();
     let medicineList = [];
-    selectedNodeList.map((node) => {
-         medicineList.push({ ...node.data});
-         return console.log(node);
-    }); 
+    selectedNodeList.map(node => medicineList.push({ ...node.data })); 
     this.setState({selectedMedicineData : medicineList});
    };
    
@@ -136,13 +134,10 @@ class PurchaseLayout extends Component{
         "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
       )
       .then( (response) => {
-        this.setState({ rowData: response.data.Items }, () =>
-          console.log(this.state.rowData)
-        );
+        this.setState({ rowData: response.data.Items });
       })
       .catch(function(error) {
         // handle error
-        console.log(error);
       });
   };
   
