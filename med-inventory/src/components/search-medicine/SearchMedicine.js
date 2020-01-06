@@ -1,17 +1,38 @@
 import React, { Component } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MedicineTable from "./MedicineTable";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from "@material-ui/icons/Search";
+
 import axios from "axios";
 import "./SearchMedicine.css";
 
 class GetAllMedicine extends Component {
-  state = { medicines: this.getMedicine };
+  state = { medicines: this.getMedicine, filteredMedicine: [] };
 
   render() {
     return (
       <div>
         {this.state.medicines ? (
-          <MedicineTable data={this.state.medicines} />
+          <>
+            <TextField
+              id="standard-name"
+              label="Search medicine name"
+              className={""}
+              value={this.state.name}
+              onChange={event => this.filterMedicines(event.target.value)}
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                )
+              }}
+            />
+            <MedicineTable data={this.state.filteredMedicine} />
+          </>
         ) : (
           <CircularProgress />
         )}
@@ -29,14 +50,22 @@ class GetAllMedicine extends Component {
         "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
       )
       .then(response => {
-        this.setState({ medicines: response.data.Items }, () =>
-          console.log(this.state.medicines)
-        );
+        this.setState({
+          medicines: response.data.Items,
+          filteredMedicine: response.data.Items
+        });
       })
       .catch(function(error) {
         // handle error
         console.log(error);
       });
+  };
+
+  filterMedicines = searchTerm => {
+    const filteredMedicine = this.state.medicines.filter(medicine =>
+      medicine.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    this.setState({ filteredMedicine });
   };
 }
 
