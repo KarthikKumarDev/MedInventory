@@ -62,7 +62,7 @@ class PurchaseLayout extends Component{
         purchaseNumber: "",
         invoiceAmount : "",
         invoiceDate : new Date(),
-        dicount : "",
+        discount : "",
         purchaseDate: new Date(),
         total : ""
       }

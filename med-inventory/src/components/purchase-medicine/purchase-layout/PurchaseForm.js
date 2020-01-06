@@ -17,7 +17,7 @@ class PurchaseForm extends Component {
         purchaseNumber: "",
         invoiceAmount : "",
         invoiceDate : new Date(),
-        dicount : "",
+        discount : "",
         purchaseDate: new Date(),
         total : ""
       };
@@ -107,7 +107,7 @@ class PurchaseForm extends Component {
                   <TextField
                             id="total"
                             label="Total"
-                            value={this.props.purchaseDetails.invoiceAmount}
+                            value={this.props.purchaseDetails.total}
                             onChange={this.handleChange("total")}
                             margin="normal"
                             type="number"
