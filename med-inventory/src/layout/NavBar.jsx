@@ -23,7 +23,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AddToQueueIcon from "@material-ui/icons/AddToQueue";
 import SearchIcon from "@material-ui/icons/Search";
-
+import PurchaseLayout from "../components/purchase-medicine/purchase-layout/PurchaseLayout";
 import Home from "../components/Home";
 import AddMedicine from "../components/add-medicine/AddMedicine";
 import SearchMedicine from "../components/search-medicine/SearchMedicine";
@@ -266,6 +266,7 @@ export default function NavBar(props) {
           <Home user={props.user} path="/" />
           <AddMedicine path="/add-medicine" />
           <Billing path="/billing" />
+          <PurchaseLayout path="/purchase" />
           <SearchMedicine path="/search" />
           <UploadData path="/upload-data" />
         </Router>
