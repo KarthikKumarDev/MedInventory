@@ -139,8 +139,12 @@ class PurchaseLayout extends Component{
       .get(
         "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
       )
-      .then( (response) => {
-        this.setState({ rowData: response.data.Items });
+      .then(response => {
+        let rowData = response.data.Items.map(obj => ({
+          ...obj,
+          newStockCount: ""
+        }));
+        this.setState({ rowData });
       })
       .catch(function(error) {
         // handle error
