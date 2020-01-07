@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import TextField from "@material-ui/core/TextField";
+import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import "./MedicineList.css";
+import './MedicineList.css';
 
 class MedicineList extends Component {
   state = {};

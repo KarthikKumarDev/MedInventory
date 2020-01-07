@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { Component } from 'react';
+import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import SearchAndAddMedicine from "./SearchAndAddMedicine";
-import BillingForm from "./BillingForm";
-import MedicineList from "./MedicineList";
+import SearchAndAddMedicine from './SearchAndAddMedicine';
+import BillingForm from './BillingForm';
+import MedicineList from './MedicineList';
 
-import "./Billing.css";
+import './Billing.css';
 
 class Billing extends Component {
   state = {
@@ -15,10 +15,10 @@ class Billing extends Component {
     medicines: null,
     billMedicineList: [],
     billingDetails: {
-      patientName: "",
-      patientContactNumber: "",
-      billingDate: new Date()
-    }
+      patientName: '',
+      patientContactNumber: '',
+      billingDate: new Date(),
+    },
   };
   render() {
     return (
@@ -68,7 +68,7 @@ class Billing extends Component {
   getMedicine = () => {
     axios
       .get(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine'
       )
       .then(response => {
         this.setState({ medicines: response.data.Items });

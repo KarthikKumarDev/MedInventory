@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Button from "@material-ui/core/Button";
-const papa = require("papaparse");
+import React, { Component } from 'react';
+import axios from 'axios';
+import Button from '@material-ui/core/Button';
+const papa = require('papaparse');
 
 class UploadData extends Component {
   state = { file: null };
@@ -29,20 +29,20 @@ class UploadData extends Component {
       header: true,
       complete: result => {
         result.data.map(item => this.addMedicine(item));
-      }
+      },
     });
   };
 
   addMedicine = values => {
     for (var key in values) {
-      if (values[key] === "") console.log(values);
-      values[key] = values[key] === "" ? "0" : values[key];
+      if (values[key] === '') console.log(values);
+      values[key] = values[key] === '' ? '0' : values[key];
     }
     axios
       .post(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine",
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine',
         {
-          ...values
+          ...values,
         }
       )
       .then(response => {

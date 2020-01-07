@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import "./PreviewPurchase.css";
+import React, { Component } from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import './PreviewPurchase.css';
 
 class PreviewPurchase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedData: this.props.medicinelistchoosen
+      selectedData: this.props.medicinelistchoosen,
     };
   }
 
@@ -45,7 +45,7 @@ class PreviewPurchase extends Component {
             </div>
           </div>
         ) : (
-          ""
+          ''
         )}
       </>
     );

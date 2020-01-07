@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import MedicineTable from "./MedicineTable";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import SearchIcon from "@material-ui/icons/Search";
+import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import MedicineTable from './MedicineTable';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
 
-import axios from "axios";
-import "./SearchMedicine.css";
+import axios from 'axios';
+import './SearchMedicine.css';
 
 class GetAllMedicine extends Component {
   state = { medicines: this.getMedicine, filteredMedicine: [] };
@@ -19,7 +19,7 @@ class GetAllMedicine extends Component {
             <TextField
               id="standard-name"
               label="Search medicine name"
-              className={""}
+              className={''}
               value={this.state.name}
               onChange={event => this.filterMedicines(event.target.value)}
               margin="normal"
@@ -28,7 +28,7 @@ class GetAllMedicine extends Component {
                   <InputAdornment position="start">
                     <SearchIcon />
                   </InputAdornment>
-                )
+                ),
               }}
             />
             <MedicineTable data={this.state.filteredMedicine} />
@@ -47,12 +47,12 @@ class GetAllMedicine extends Component {
   getMedicine = () => {
     axios
       .get(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine'
       )
       .then(response => {
         this.setState({
           medicines: response.data.Items,
-          filteredMedicine: response.data.Items
+          filteredMedicine: response.data.Items,
         });
       })
       .catch(function(error) {

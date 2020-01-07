@@ -1,47 +1,47 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/styles";
-import TextField from "@material-ui/core/TextField";
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/styles';
+import TextField from '@material-ui/core/TextField';
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-import "./BillingForm.css";
+import './BillingForm.css';
 
 const styles = theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   textField: {
     marginLeft: 1,
     marginRight: 1,
-    width: "100%"
+    width: '100%',
   },
   formControl: {
     marginLeft: 1,
     marginRight: 1,
-    width: "100%"
-  }
+    width: '100%',
+  },
 });
 
 class BillingForm extends Component {
   state = {
-    name: "",
-    contactNumber: "",
-    billingDate: new Date()
+    name: '',
+    contactNumber: '',
+    billingDate: new Date(),
   };
 
   handleChange = changedValue => event => {
     const updatedValue =
-      changedValue === "billingDate" ? event : event.target.value;
+      changedValue === 'billingDate' ? event : event.target.value;
     const billingDetails = {
       ...this.props.billingDetails,
-      [changedValue]: updatedValue
+      [changedValue]: updatedValue,
     };
     this.props.updateBillingDetails(billingDetails);
   };
@@ -66,9 +66,9 @@ class BillingForm extends Component {
                   id="billingDate"
                   label="Billing Date"
                   value={this.props.billingDetails.billingDate}
-                  onChange={this.handleChange("billingDate")}
+                  onChange={this.handleChange('billingDate')}
                   KeyboardButtonProps={{
-                    "aria-label": "change date"
+                    'aria-label': 'change date',
                   }}
                 />
               </MuiPickersUtilsProvider>
@@ -77,7 +77,7 @@ class BillingForm extends Component {
                 label="Patient Name"
                 className={classes.textField}
                 value={this.props.billingDetails.patientName}
-                onChange={this.handleChange("patientName")}
+                onChange={this.handleChange('patientName')}
                 margin="normal"
               />
               <TextField
@@ -85,7 +85,7 @@ class BillingForm extends Component {
                 label="Phone Number"
                 className={classes.textField}
                 value={this.props.billingDetails.patientContactNumber}
-                onChange={this.handleChange("patientContactNumber")}
+                onChange={this.handleChange('patientContactNumber')}
                 margin="normal"
                 type="number"
               />

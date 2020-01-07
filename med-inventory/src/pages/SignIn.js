@@ -1,6 +1,6 @@
-import React from "react";
-import "./SignIn.css";
-import Button from "@material-ui/core/Button";
+import React from 'react';
+import './SignIn.css';
+import Button from '@material-ui/core/Button';
 
 export default function SignIn(props) {
   const { signInWithGoogle } = props;

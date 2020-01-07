@@ -1,7 +1,7 @@
-import React from "react";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import React from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 class MedicineTable extends React.Component {
   constructor(props) {
@@ -14,43 +14,43 @@ class MedicineTable extends React.Component {
       suppressPreventDefaultOnMouseWheel: true,
       suppressDragLeaveHidesColumns: true,
       rowHeight: 40,
-      headerHeight: 46
+      headerHeight: 46,
     };
     this.state = {
       columnDefs: [
         {
-          headerName: "NAME",
-          field: "name",
+          headerName: 'NAME',
+          field: 'name',
           sortable: true,
           filter: true,
-          pinned: true
+          pinned: true,
         },
         {
-          headerName: "MANUFACTURER",
-          field: "manufacturer",
+          headerName: 'MANUFACTURER',
+          field: 'manufacturer',
           sortable: true,
-          filter: true
+          filter: true,
         },
         {
-          headerName: "PRICE",
-          field: "mrp",
+          headerName: 'PRICE',
+          field: 'mrp',
           sortable: true,
-          filter: true
+          filter: true,
         },
         {
-          headerName: "CREATED BY",
-          field: "CreatedBy",
+          headerName: 'CREATED BY',
+          field: 'CreatedBy',
           sortable: true,
-          filter: true
+          filter: true,
         },
         {
-          headerName: "CATEGORY",
-          field: "category",
+          headerName: 'CATEGORY',
+          field: 'category',
           sortable: true,
-          filter: true
-        }
+          filter: true,
+        },
       ],
-      rowData: props.data
+      rowData: props.data,
     };
   }
   render() {
@@ -58,8 +58,8 @@ class MedicineTable extends React.Component {
       <div
         className="ag-theme-balham"
         style={{
-          height: "500px",
-          width: "1020px"
+          height: '500px',
+          width: '1020px',
         }}
       >
         <AgGridReact

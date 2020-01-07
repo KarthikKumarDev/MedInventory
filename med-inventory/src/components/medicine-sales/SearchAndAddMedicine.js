@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import axios from "axios";
-import Button from "@material-ui/core/Button";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 
-import "./SearchAndAddMedicine.css";
+import './SearchAndAddMedicine.css';
 
 class SearchAndAddMedicine extends Component {
   state = {
-    selectedMedicine: null
+    selectedMedicine: null,
   };
   render() {
     return (

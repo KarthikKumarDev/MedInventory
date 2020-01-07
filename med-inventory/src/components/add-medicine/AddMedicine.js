@@ -1,16 +1,18 @@
-import React, { Component } from "react";
-import axios from "axios";
-import CustomizedSnackbars from "../../shared/SnackBar";
+import React, { Component } from 'react';
+import axios from 'axios';
+import CustomizedSnackbars from '../../shared/SnackBar';
 
-import "./AddMedicine.css";
-import AddMedicineForm from "./AddMedicineForm";
+import './AddMedicine.css';
+import AddMedicineForm from './AddMedicineForm';
 
 class AddMedicine extends Component {
   state = { isNotificationVisible: false };
   render() {
     return (
       <div className="form-section">
-        <AddMedicineForm handleAddMedicine={(values) => this.handleAddMedicineClick(values)} />
+        <AddMedicineForm
+          handleAddMedicine={values => this.handleAddMedicineClick(values)}
+        />
 
         {this.state.isNotificationVisible ? (
           <CustomizedSnackbars
@@ -22,16 +24,16 @@ class AddMedicine extends Component {
     );
   }
 
-  handleAddMedicineClick = (values) => {
+  handleAddMedicineClick = values => {
     axios
       .post(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine",
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine',
         {
           MedicineId: Date.now()
             .toString()
             .substring(11, 13),
-            ...values,
-          CreatedBy: localStorage.getItem("user")
+          ...values,
+          CreatedBy: localStorage.getItem('user'),
         }
       )
       .then(response => {
@@ -45,7 +47,7 @@ class AddMedicine extends Component {
   getMedicineCount = () => {
     axios
       .get(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine'
       )
       .then(response => {
         console.log(response);
