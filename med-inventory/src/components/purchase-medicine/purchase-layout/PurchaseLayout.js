@@ -8,7 +8,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./purchaseLayout.css";
 import NumericEditor from "../../../shared/gridEditors/NumericEditor";
-import PreviewPurchase from "./previewPurchase";
+import PreviewPurchase from "./PreviewPurchase";
 import PurchaseForm from "./PurchaseForm";
 
 class PurchaseLayout extends Component{
@@ -128,10 +128,12 @@ class PurchaseLayout extends Component{
    } 
 
    onGridDataChanged = (params) => {
-    const selectedNodeList = params.api.getSelectedNodes();
-    let medicineList = [];
-    selectedNodeList.map(node => medicineList.push({ ...node.data })); 
-    this.setState({selectedMedicineData : medicineList});
+     if(params.api !== null){
+      const selectedNodeList = params.api.getSelectedNodes();
+      let medicineList = [];
+      selectedNodeList.map(node => medicineList.push({ ...node.data })); 
+      this.setState({selectedMedicineData : medicineList});
+     }
    };
    
   getMedicine = () => {

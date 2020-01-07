@@ -23,7 +23,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AddToQueueIcon from "@material-ui/icons/AddToQueue";
 import SearchIcon from "@material-ui/icons/Search";
-import Purchase from "../components/purchase-medicine/purchase-layout/purchaseLayout";
+import Purchase from "../components/purchase-medicine/purchase-layout/PurchaseLayout";
 import Home from "../components/Home";
 import AddMedicine from "../components/add-medicine/AddMedicine";
 import SearchMedicine from "../components/search-medicine/SearchMedicine";
