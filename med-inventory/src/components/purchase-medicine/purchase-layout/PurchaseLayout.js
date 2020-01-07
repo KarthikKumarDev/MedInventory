@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
-import axios from "axios";
-import CardContent from "@material-ui/core/CardContent";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import "./PurchaseLayout.css";
-import NumericEditor from "../../../shared/gridEditors/NumericEditor";
-import PreviewPurchase from "./PreviewPurchase";
-import PurchaseForm from "./PurchaseForm";
+import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
+import axios from 'axios';
+import CardContent from '@material-ui/core/CardContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import './PurchaseLayout.css';
+import NumericEditor from '../../../shared/gridEditors/NumericEditor';
+import PreviewPurchase from './PreviewPurchase';
+import PurchaseForm from './PurchaseForm';
 
 class PurchaseLayout extends Component {
   constructor() {
@@ -29,91 +29,91 @@ class PurchaseLayout extends Component {
       },
       onGridSizeChanged: params => {
         params.api.sizeColumnsToFit();
-      }
+      },
     };
-    this.rowSelection = "multiple";
-    this.singleEditClick = "true";
+    this.rowSelection = 'multiple';
+    this.singleEditClick = 'true';
     this.frameworkComponents = {
-      numericEditor: NumericEditor
+      numericEditor: NumericEditor,
     };
     this.columnDefs = [
       {
-        headerName: "NAME",
-        field: "name",
+        headerName: 'NAME',
+        field: 'name',
         sortable: true,
         filter: true,
-        pinned: "left",
+        pinned: 'left',
         width: 180,
         minWidth: 180,
         headerCheckboxSelection: true,
         checkboxSelection: true,
-        lockPosition: true
+        lockPosition: true,
       },
       {
-        headerName: "MANUFACTURER",
-        field: "manufacturer",
+        headerName: 'MANUFACTURER',
+        field: 'manufacturer',
         sortable: true,
         width: 150,
         minWidth: 150,
-        filter: true
+        filter: true,
       },
       {
-        headerName: "PRICE",
-        field: "mrp",
+        headerName: 'PRICE',
+        field: 'mrp',
         sortable: true,
         width: 150,
         minWidth: 150,
-        filter: true
+        filter: true,
       },
       {
-        headerName: "CREATED BY",
-        field: "CreatedBy",
+        headerName: 'CREATED BY',
+        field: 'CreatedBy',
         sortable: true,
         width: 150,
         minWidth: 150,
-        filter: true
+        filter: true,
       },
       {
-        headerName: "CATEGORY",
-        field: "category",
+        headerName: 'CATEGORY',
+        field: 'category',
         sortable: true,
         width: 150,
         minWidth: 150,
-        filter: true
+        filter: true,
       },
       {
-        headerName: "CURRENT STOCK COUNT",
-        resizable: "true",
-        field: "currentStockCount",
+        headerName: 'CURRENT STOCK COUNT',
+        resizable: 'true',
+        field: 'currentStockCount',
         width: 180,
         minWidth: 180,
         sortable: true,
-        filter: true
+        filter: true,
       },
       {
-        headerName: "NEW STOCK COUNT",
-        field: "newStockCount",
+        headerName: 'NEW STOCK COUNT',
+        field: 'newStockCount',
         sortable: true,
         width: 180,
         minWidth: 180,
         filter: true,
         editable: true,
-        cellEditor: "numericEditor",
-        pinned: "right",
-        lockPinned: true
-      }
+        cellEditor: 'numericEditor',
+        pinned: 'right',
+        lockPinned: true,
+      },
     ];
     this.state = {
       rowData: [],
       selectedMedicineData: [],
       purchaseDetails: {
-        purchaseNumber: "",
-        invoiceAmount: "",
+        purchaseNumber: '',
+        invoiceAmount: '',
         invoiceDate: new Date(),
-        discount: "",
+        discount: '',
         purchaseDate: new Date(),
-        total: ""
-      }
+        total: '',
+      },
     };
   }
 
@@ -128,7 +128,7 @@ class PurchaseLayout extends Component {
                   <div
                     className="ag-theme-balham"
                     style={{
-                      height: "300px"
+                      height: '300px',
                     }}
                   >
                     <AgGridReact
@@ -192,12 +192,12 @@ class PurchaseLayout extends Component {
   getMedicine = () => {
     axios
       .get(
-        "https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine"
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine'
       )
       .then(response => {
         let rowData = response.data.Items.map(obj => ({
           ...obj,
-          newStockCount: ""
+          newStockCount: '',
         }));
         this.setState({ rowData });
       })

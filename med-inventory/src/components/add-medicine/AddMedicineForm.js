@@ -1,51 +1,51 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/styles";
-import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import Button from "@material-ui/core/Button";
-import FormControl from "@material-ui/core/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/styles';
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-import "./AddMedicineForm.css";
+import './AddMedicineForm.css';
 
 const styles = theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap',
   },
   textField: {
     marginLeft: 1,
     marginRight: 1,
-    width: "100%"
+    width: '100%',
   },
   dense: {
-    marginTop: 19
+    marginTop: 19,
   },
   formControl: {
     marginLeft: 1,
     marginRight: 1,
-    width: "100%"
-  }
+    width: '100%',
+  },
 });
 
 class AddMedicineForm extends Component {
   state = {
-    name: "",
-    category: "",
-    packing: "",
-    manufacturer: "",
+    name: '',
+    category: '',
+    packing: '',
+    manufacturer: '',
     reorderLevel: 0,
     purchaseRate: 0,
     mrp: 0,
     cgst: 0,
     sgst: 0,
     tax: 0,
-    convertRatio: 0
+    convertRatio: 0,
   };
 
   handleChange = changedValue => event => {
@@ -69,7 +69,7 @@ class AddMedicineForm extends Component {
                 label="Name & Combination"
                 className={classes.textField}
                 value={this.state.name}
-                onChange={this.handleChange("name")}
+                onChange={this.handleChange('name')}
                 margin="normal"
               />
               <FormControl className={classes.formControl}>
@@ -81,16 +81,16 @@ class AddMedicineForm extends Component {
                   className={classes.select}
                   label="Category"
                   value={this.state.category}
-                  onChange={this.handleChange("category")}
+                  onChange={this.handleChange('category')}
                   inputProps={{
-                    name: "category",
-                    id: "category-native-simple"
+                    name: 'category',
+                    id: 'category-native-simple',
                   }}
                 >
                   <option value="" />
-                  <option value={"Category1"}>Category1</option>
-                  <option value={"Category2"}>Category2</option>
-                  <option value={"Category3"}>Category3</option>
+                  <option value={'Category1'}>Category1</option>
+                  <option value={'Category2'}>Category2</option>
+                  <option value={'Category3'}>Category3</option>
                 </Select>
               </FormControl>
               <TextField
@@ -98,7 +98,7 @@ class AddMedicineForm extends Component {
                 label="Packing"
                 className={classes.textField}
                 value={this.state.packing}
-                onChange={this.handleChange("packing")}
+                onChange={this.handleChange('packing')}
                 margin="normal"
               />
               <TextField
@@ -106,7 +106,7 @@ class AddMedicineForm extends Component {
                 label="Manufacturer"
                 className={classes.textField}
                 value={this.state.manufacturer}
-                onChange={this.handleChange("manufacturer")}
+                onChange={this.handleChange('manufacturer')}
                 margin="normal"
               />
               <TextField
@@ -114,7 +114,7 @@ class AddMedicineForm extends Component {
                 label="Reorder Level."
                 className={classes.textField}
                 value={this.state.reorderLevel}
-                onChange={this.handleChange("reorderLevel")}
+                onChange={this.handleChange('reorderLevel')}
                 margin="normal"
               />
               <TextField
@@ -123,7 +123,7 @@ class AddMedicineForm extends Component {
                 type="number"
                 className={classes.textField}
                 value={this.state.convertRatio}
-                onChange={this.handleChange("convertRatio")}
+                onChange={this.handleChange('convertRatio')}
                 margin="normal"
               />
             </CardContent>
@@ -137,12 +137,12 @@ class AddMedicineForm extends Component {
                 type="number"
                 className={classes.textField}
                 value={this.state.purchaseRate}
-                onChange={this.handleChange("purchaseRate")}
+                onChange={this.handleChange('purchaseRate')}
                 margin="normal"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">&#8377;</InputAdornment>
-                  )
+                  ),
                 }}
               />
               <TextField
@@ -151,12 +151,12 @@ class AddMedicineForm extends Component {
                 type="number"
                 className={classes.textField}
                 value={this.state.mrp}
-                onChange={this.handleChange("mrp")}
+                onChange={this.handleChange('mrp')}
                 margin="normal"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">&#8377;</InputAdornment>
-                  )
+                  ),
                 }}
               />
               <TextField
@@ -165,12 +165,12 @@ class AddMedicineForm extends Component {
                 type="number"
                 className={classes.textField}
                 value={this.state.cgst}
-                onChange={this.handleChange("cgst")}
+                onChange={this.handleChange('cgst')}
                 margin="normal"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">%</InputAdornment>
-                  )
+                  ),
                 }}
               />
               <TextField
@@ -178,12 +178,12 @@ class AddMedicineForm extends Component {
                 label="State GST"
                 className={classes.textField}
                 value={this.state.sgst}
-                onChange={this.handleChange("sgst")}
+                onChange={this.handleChange('sgst')}
                 margin="normal"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">%</InputAdornment>
-                  )
+                  ),
                 }}
               />
               <TextField
@@ -192,12 +192,12 @@ class AddMedicineForm extends Component {
                 type="number"
                 className={classes.textField}
                 value={this.state.tax}
-                onChange={this.handleChange("tax")}
+                onChange={this.handleChange('tax')}
                 margin="normal"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">%</InputAdornment>
-                  )
+                  ),
                 }}
               />
               <Button
