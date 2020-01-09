@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CustomizedSnackbars from '../../shared/SnackBar';
 
-import './AddMedicine.css';
+import './AddMedicine.scss';
 import AddMedicineForm from './AddMedicineForm';
 
 class AddMedicine extends Component {

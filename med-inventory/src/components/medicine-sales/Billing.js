@@ -7,7 +7,7 @@ import SearchAndAddMedicine from './SearchAndAddMedicine';
 import BillingForm from './BillingForm';
 import MedicineList from './MedicineList';
 
-import './Billing.css';
+import './Billing.scss';
 
 class Billing extends Component {
   state = {

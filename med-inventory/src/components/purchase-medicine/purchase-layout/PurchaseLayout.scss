@@ -1,0 +1,47 @@
+.card-style{
+    width:100%;
+    height:80vh;
+
+    .layout-style{
+        display: flex; 
+        flex-direction: row;
+        margin-top:35px;
+        justify-content: space-between;
+        padding: 10px;
+
+        .layout-box1{
+            display: flex; 
+            flex-direction: column;
+            width: 62vw;
+        }
+        .layout-box2{
+            display: flex;
+            justify-content: "flex-end";
+            width : 23vw;
+         }
+         .preview-box{
+            height: 65vh;
+            width : 23vw;
+            border: 1px solid #D8D8D8;
+            box-shadow: 2px #D8D8D8;
+          }
+        .form-box{
+            display: flex; 
+            flex-direction: row;
+            width: 60vw;
+            margin-top:10px;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+    }
+}
+
+.MuiCard-root {
+    overflow: Auto;
+}
+
+
+
+
+
+

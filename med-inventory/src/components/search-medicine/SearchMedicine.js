@@ -6,7 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 
 import axios from 'axios';
-import './SearchMedicine.css';
+import './SearchMedicine.scss';
 
 class GetAllMedicine extends Component {
   state = { medicines: this.getMedicine, filteredMedicine: [] };

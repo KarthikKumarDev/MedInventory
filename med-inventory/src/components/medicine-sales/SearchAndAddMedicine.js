@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-import './SearchAndAddMedicine.css';
+import './SearchAndAddMedicine.scss';
 
 class SearchAndAddMedicine extends Component {
   state = {

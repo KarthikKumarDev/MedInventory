@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import './PurchaseLayout.css';
+import './PurchaseLayout.scss';
 import NumericEditor from '../../../shared/gridEditors/NumericEditor';
 import PreviewPurchase from './PreviewPurchase';
 import PurchaseForm from './PurchaseForm';
