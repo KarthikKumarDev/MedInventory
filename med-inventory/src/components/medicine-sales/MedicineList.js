@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './MedicineList.css';
+import './MedicineList.scss';
 
 class MedicineList extends Component {
   state = {};

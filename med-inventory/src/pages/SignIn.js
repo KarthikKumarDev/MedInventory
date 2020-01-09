@@ -1,5 +1,5 @@
 import React from 'react';
-import './SignIn.css';
+import './SignIn.scss';
 import Button from '@material-ui/core/Button';
 
 export default function SignIn(props) {

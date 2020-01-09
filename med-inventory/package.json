@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "husky": "^4.0.0",
-    "lint-staged": "^9.5.0"
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
