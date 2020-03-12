@@ -194,13 +194,12 @@ class PurchaseLayout extends Component {
           }
         )
         .then(response => {
-          console.log('value:::handleUpdatePurchaseClick', response);
           if(response.data.statusCode !== '400'){
             this.setState({ isNotificationVisible: true });
           }
         })
         .catch(function(error) {
-          console.log(error);
+          // handle error
         });
   };
   onGridReady = params => {
