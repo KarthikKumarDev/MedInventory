@@ -195,7 +195,7 @@ class PurchaseLayout extends Component {
         )
         .then(response => {
           console.log('value:::handleUpdatePurchaseClick', response);
-          if(response.data.statusCode != 400){
+          if(response.data.statusCode !== '400'){
             this.setState({ isNotificationVisible: true });
           }
         })
@@ -221,7 +221,12 @@ class PurchaseLayout extends Component {
       medicineList.forEach(element => {
             total += parseInt(element.newStockCount) * parseInt(element.mrp);
       });
-      this.state.purchaseDetails.Total = total;
+      this.setState(prevState => ({
+        purchaseDetails: {
+          ...prevState.purchaseDetails,
+          Total : total
+        }
+      }));
       this.setState({ selectedMedicineData: medicineList });
     }
   };
