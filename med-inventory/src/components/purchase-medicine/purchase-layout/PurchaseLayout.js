@@ -10,6 +10,7 @@ import './PurchaseLayout.scss';
 import NumericEditor from '../../../shared/gridEditors/NumericEditor';
 import PreviewPurchase from './PreviewPurchase';
 import PurchaseForm from './PurchaseForm';
+import CustomizedSnackbars from '../../../shared/SnackBar';
 
 class PurchaseLayout extends Component {
   constructor() {
@@ -104,15 +105,16 @@ class PurchaseLayout extends Component {
       },
     ];
     this.state = {
+      isNotificationVisible: false,
       rowData: [],
       selectedMedicineData: [],
       purchaseDetails: {
-        purchaseNumber: '',
-        invoiceAmount: '',
-        invoiceDate: new Date(),
-        discount: '',
-        purchaseDate: new Date(),
-        total: '',
+        PurchaseNumber: '',
+        InvoiceAmount: '',
+        InvoiceDate: new Date(),
+        Discount: '',
+        PurchaseDate: new Date(),
+        Total: '',
       },
     };
   }
@@ -151,7 +153,14 @@ class PurchaseLayout extends Component {
                       updatePurchaseDetails={purchaseDetails =>
                         this.setState({ purchaseDetails })
                       }
+                      handleUpdatePurchase={purchaseDetails => this.handleUpdatePurchaseClick(this.state.purchaseDetails)}
                     />
+                        {this.state.isNotificationVisible ? (
+                          <CustomizedSnackbars
+                            variant="success"
+                            message="Purchase Log Updated successfully"
+                          />
+                        ) : null}
                   </div>
                 </div>
                 <div className="layout-box2">
@@ -171,6 +180,29 @@ class PurchaseLayout extends Component {
     );
   }
 
+  handleUpdatePurchaseClick = values => {
+     values.Total = values.Total.toString();
+      axios
+        .post(
+          'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/purchase',
+          {
+            PurchaseId: Date.now()
+              .toString()
+              .substring(11, 13),
+            ...values,
+            CreatedBy: "User",
+          }
+        )
+        .then(response => {
+          console.log('value:::handleUpdatePurchaseClick', response);
+          if(response.data.statusCode != 400){
+            this.setState({ isNotificationVisible: true });
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+  };
   onGridReady = params => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
@@ -185,6 +217,11 @@ class PurchaseLayout extends Component {
       const selectedNodeList = params.api.getSelectedNodes();
       let medicineList = [];
       selectedNodeList.map(node => medicineList.push({ ...node.data }));
+      let total = 0;
+      medicineList.forEach(element => {
+            total += parseInt(element.newStockCount) * parseInt(element.mrp);
+      });
+      this.state.purchaseDetails.Total = total;
       this.setState({ selectedMedicineData: medicineList });
     }
   };

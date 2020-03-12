@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -17,16 +18,16 @@ const styles = theme => ({
 
 class PurchaseForm extends Component {
   state = {
-    purchaseNumber: '',
-    invoiceAmount: '',
-    invoiceDate: new Date(),
-    discount: '',
-    purchaseDate: new Date(),
-    total: '',
+    PurchaseNumber: '',
+    InvoiceAmount: '',
+    InvoiceDate: new Date(),
+    Discount: '',
+    PurchaseDate: new Date(),
+    Total: '',
   };
   handleChange = changedValue => event => {
     const updatedValue =
-      changedValue === 'purchaseDate' || changedValue === 'invoiceDate'
+      changedValue === 'PurchaseDate' || changedValue === 'InvoiceDate'
         ? event
         : event.target.value;
     const purchaseDetails = {
@@ -49,8 +50,8 @@ class PurchaseForm extends Component {
               id="purchaseDate"
               className={classes.textField}
               label="Purchase Date"
-              value={this.props.purchaseDetails.purchaseDate}
-              onChange={this.handleChange('purchaseDate')}
+              value={this.props.purchaseDetails.PurchaseDate}
+              onChange={this.handleChange('PurchaseDate')}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
               }}
@@ -62,8 +63,8 @@ class PurchaseForm extends Component {
             id="purchaseNumber"
             label="Purchase Number"
             className={classes.textField}
-            value={this.props.purchaseDetails.purchaseNumber}
-            onChange={this.handleChange('purchaseNumber')}
+            value={this.props.purchaseDetails.PurchaseNumber}
+            onChange={this.handleChange('PurchaseNumber')}
             margin="normal"
             type="number"
           />
@@ -77,8 +78,8 @@ class PurchaseForm extends Component {
               id="invoiceDate"
               className={classes.textField}
               label="Invoice Date"
-              value={this.props.purchaseDetails.invoiceDate}
-              onChange={this.handleChange('invoiceDate')}
+              value={this.props.purchaseDetails.InvoiceDate}
+              onChange={this.handleChange('InvoiceDate')}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
               }}
@@ -89,8 +90,8 @@ class PurchaseForm extends Component {
           <TextField
             id="invoiceAmount"
             label="Invoice Amount"
-            value={this.props.purchaseDetails.invoiceAmount}
-            onChange={this.handleChange('invoiceAmount')}
+            value={this.props.purchaseDetails.InvoiceAmount}
+            onChange={this.handleChange('InvoiceAmount')}
             margin="normal"
             type="number"
             className={classes.textField}
@@ -100,8 +101,8 @@ class PurchaseForm extends Component {
           <TextField
             id="discount"
             label="Discount"
-            value={this.props.purchaseDetails.discount}
-            onChange={this.handleChange('discount')}
+            value={this.props.purchaseDetails.Discount}
+            onChange={this.handleChange('Discount')}
             margin="normal"
             type="number"
             className={classes.textField}
@@ -111,14 +112,24 @@ class PurchaseForm extends Component {
           <TextField
             id="total"
             label="Total"
-            value={this.props.purchaseDetails.total}
-            onChange={this.handleChange('total')}
+            value={this.props.purchaseDetails.Total}
+            onChange={this.handleChange('Total')}
             margin="normal"
             type="number"
             disabled
             className={classes.textField}
           />
         </div>
+        <div>
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={() => this.props.handleUpdatePurchase(this.state)}
+            className={classes.textField}
+          >
+            Update Log
+          </Button>
+        </div> 
       </>
     );
   }
