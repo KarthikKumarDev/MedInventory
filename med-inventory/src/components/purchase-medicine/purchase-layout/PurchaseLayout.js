@@ -153,7 +153,7 @@ class PurchaseLayout extends Component {
                       updatePurchaseDetails={purchaseDetails =>
                         this.setState({ purchaseDetails })
                       }
-                      handleUpdatePurchase={purchaseDetails => this.handleUpdatePurchaseClick(this.state.purchaseDetails)}
+                      handleUpdateLogClick={purchaseDetails => this.handleUpdatePurchaseClick(this.state.purchaseDetails)}
                     />
                         {this.state.isNotificationVisible ? (
                           <CustomizedSnackbars
