@@ -127,7 +127,7 @@ class PurchaseForm extends Component {
             onClick={() => this.props.handleUpdateLogClick(this.state)}
             className={classes.textField}
           >
-            Update Log
+            Add Purchase
           </Button>
         </div> 
       </>
