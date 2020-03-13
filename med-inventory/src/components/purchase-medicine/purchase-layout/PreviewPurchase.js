@@ -31,11 +31,14 @@ class PreviewPurchase extends Component {
               <Table>
                 <TableBody>
                   {this.props.medicinelistchoosen.map(item => (
-                    <TableRow key={item.name}>
-                      <TableCell class="table-cell-style" align="left">
+                    <TableRow
+                      className={item.newStockCount ? '' : 'zero-stock-alert'}
+                      key={item.name}
+                    >
+                      <TableCell className="table-cell-style" align="left">
                         {item.name}
                       </TableCell>
-                      <TableCell class="table-cell-style" align="center">
+                      <TableCell className="table-cell-style" align="center">
                         {item.newStockCount}
                       </TableCell>
                     </TableRow>
