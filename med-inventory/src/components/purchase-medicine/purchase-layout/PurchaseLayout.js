@@ -114,13 +114,18 @@ class PurchaseLayout extends Component {
         InvoiceDate: new Date(),
         Discount: '',
         PurchaseDate: new Date(),
-        Total: '',
+        Total: 0,
       },
+      isPurchaseFormValid: true,
+      isDataLoading: true,
     };
+    this.getMedicine();
   }
 
   render() {
-    return (
+    return this.state.isDataLoading ? (
+      <CircularProgress />
+    ) : (
       <div>
         {this.state.rowData ? (
           <Card className="card-style">
@@ -145,6 +150,7 @@ class PurchaseLayout extends Component {
                       onSelectionChanged={this.onGridDataChanged}
                       onGridReady={this.onGridReady}
                       onCellValueChanged={this.onGridDataChanged}
+                      floatingFilter={true}
                     ></AgGridReact>
                   </div>
                   <div className="form-box">
@@ -153,14 +159,19 @@ class PurchaseLayout extends Component {
                       updatePurchaseDetails={purchaseDetails =>
                         this.setState({ purchaseDetails })
                       }
-                      handleUpdateLogClick={purchaseDetails => this.handleUpdatePurchaseClick(this.state.purchaseDetails)}
+                      handleUpdateLogClick={purchaseDetails =>
+                        this.handleUpdatePurchaseClick(
+                          this.state.purchaseDetails,
+                        )
+                      }
+                      isPurchaseFormValid={this.state.isPurchaseFormValid}
                     />
-                        {this.state.isNotificationVisible ? (
-                          <CustomizedSnackbars
-                            variant="success"
-                            message="Purchase Log Updated successfully"
-                          />
-                        ) : null}
+                    {this.state.isNotificationVisible ? (
+                      <CustomizedSnackbars
+                        variant="success"
+                        message="Purchase Log Updated successfully"
+                      />
+                    ) : null}
                   </div>
                 </div>
                 <div className="layout-box2">
@@ -181,35 +192,31 @@ class PurchaseLayout extends Component {
   }
 
   handleUpdatePurchaseClick = values => {
-     values.Total = values.Total.toString();
-      axios
-        .post(
-          'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/purchase',
-          {
-            PurchaseId: Date.now()
-              .toString()
-              .substring(11, 13),
-            ...values,
-            CreatedBy: "User",
-          }
-        )
-        .then(response => {
-          if(response.data.statusCode !== '400'){
-            this.setState({ isNotificationVisible: true });
-          }
-        })
-        .catch(function(error) {
-          // handle error
-        });
+    values.Total = values.Total.toString();
+    axios
+      .post(
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/purchase',
+        {
+          PurchaseId: Date.now()
+            .toString()
+            .substring(11, 13),
+          ...values,
+          CreatedBy: 'User',
+        },
+      )
+      .then(response => {
+        if (response.data.statusCode !== '400') {
+          this.setState({ isNotificationVisible: true });
+        }
+      })
+      .catch(function(error) {
+        // handle error
+      });
   };
   onGridReady = params => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   };
-
-  componentWillMount() {
-    this.getMedicine();
-  }
 
   onGridDataChanged = params => {
     if (params.api !== null) {
@@ -218,13 +225,16 @@ class PurchaseLayout extends Component {
       selectedNodeList.map(node => medicineList.push({ ...node.data }));
       let total = 0;
       medicineList.forEach(element => {
-            total += parseInt(element.newStockCount) * parseInt(element.mrp);
+        total += parseInt(element.newStockCount) * parseInt(element.mrp);
+        if (!element.newStockCount) {
+          this.setState({ isPurchaseFormValid: false });
+        }
       });
       this.setState(prevState => ({
         purchaseDetails: {
           ...prevState.purchaseDetails,
-          Total : total
-        }
+          Total: total,
+        },
       }));
       this.setState({ selectedMedicineData: medicineList });
     }
@@ -233,14 +243,14 @@ class PurchaseLayout extends Component {
   getMedicine = () => {
     axios
       .get(
-        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine'
+        'https://sidls7kjne.execute-api.ap-south-1.amazonaws.com/staging/medicine',
       )
       .then(response => {
         let rowData = response.data.Items.map(obj => ({
           ...obj,
-          newStockCount: '',
+          newStockCount: 0,
         }));
-        this.setState({ rowData });
+        this.setState({ rowData, isDataLoading: false });
       })
       .catch(function(error) {
         // handle error

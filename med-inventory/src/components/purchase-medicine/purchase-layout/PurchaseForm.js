@@ -23,7 +23,7 @@ class PurchaseForm extends Component {
     InvoiceDate: new Date(),
     Discount: '',
     PurchaseDate: new Date(),
-    Total: '',
+    Total: 0,
   };
   handleChange = changedValue => event => {
     const updatedValue =
@@ -113,7 +113,6 @@ class PurchaseForm extends Component {
             id="total"
             label="Total"
             value={this.props.purchaseDetails.Total}
-            onChange={this.handleChange('Total')}
             margin="normal"
             type="number"
             disabled
@@ -121,15 +120,16 @@ class PurchaseForm extends Component {
           />
         </div>
         <div>
-        <Button
+          <Button
             variant="contained"
             color="primary"
             onClick={() => this.props.handleUpdateLogClick(this.state)}
             className={classes.textField}
+            disabled={!this.props.isPurchaseFormValid}
           >
             Add Purchase
           </Button>
-        </div> 
+        </div>
       </>
     );
   }
